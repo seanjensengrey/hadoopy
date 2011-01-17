@@ -40,7 +40,13 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="welcome-to-hadoopy-s-documentation">
+  <dl class="docutils">
+<dt>1;2703;0c..  Hadoopy documentation master file, created by</dt>
+<dd>sphinx-quickstart on Sat Jan 15 20:41:41 2011.
+You can adapt this file completely to your liking, but it should at least
+contain the root <cite>toctree</cite> directive.</dd>
+</dl>
+<div class="section" id="welcome-to-hadoopy-s-documentation">
 <h1>Welcome to Hadoopy&#8217;s documentation!<a class="headerlink" href="#welcome-to-hadoopy-s-documentation" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul class="simple">
@@ -66,20 +72,20 @@
 </dl>
 <p><strong>Specification of mapper/reducer/combiner</strong></p>
 <dl class="docutils">
-<dt>Input Key/Value Types</dt>
+<dt>Input Key/Value Types::</dt>
 <dd>For TypedBytes, the type will be the decoded typed
 For Text, the type will be text assuming key0\tvalue0\nkey1\tvalue1\n</dd>
-<dt>Output Key/Value Types</dt>
+<dt>Output Key/Value Types::</dt>
 <dd>For TypedBytes, anything Pickle-able can be used
 For Text, types are converted to string.  Note that neither may contain \t or \n as these are used in the encoding.  Output is key\tvalue\n</dd>
-<dt>Expected arguments</dt>
+<dt>Expected arguments::</dt>
 <dd>mapper(key, value) or mapper.map(key, value)
 reducer(key, values) or reducer.reduce(key, values)
 combiner(key, values) or combiner.combine(key, values)</dd>
-<dt>Optional methods</dt>
+<dt>Optional methods::</dt>
 <dd>func.configure(): Call first.  Returns None.
 func.close():  Call last.  Returns Iterator of (key, value) or None</dd>
-<dt>Expected return</dt>
+<dt>Expected return::</dt>
 <dd>Iterator of (key, value) or None</dd>
 </dl>
 <table class="docutils field-list" frame="void" rules="none">

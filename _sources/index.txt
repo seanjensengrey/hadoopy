@@ -1,4 +1,4 @@
-..  Hadoopy documentation master file, created by
+1;2703;0c..  Hadoopy documentation master file, created by
     sphinx-quickstart on Sat Jan 15 20:41:41 2011.
     You can adapt this file completely to your liking, but it should at least
     contain the root `toctree` directive.
@@ -32,24 +32,24 @@ Welcome to Hadoopy's documentation!
     
     **Specification of mapper/reducer/combiner**
 
-    Input Key/Value Types
+    Input Key/Value Types::
         For TypedBytes, the type will be the decoded typed
         For Text, the type will be text assuming key0\\tvalue0\\nkey1\\tvalue1\\n
 
-    Output Key/Value Types
+    Output Key/Value Types::
         For TypedBytes, anything Pickle-able can be used
         For Text, types are converted to string.  Note that neither may contain \\t or \\n as these are used in the encoding.  Output is key\\tvalue\\n
     
-    Expected arguments
+    Expected arguments::
         mapper(key, value) or mapper.map(key, value)
         reducer(key, values) or reducer.reduce(key, values)
         combiner(key, values) or combiner.combine(key, values)
 
-    Optional methods
+    Optional methods::
         func.configure(): Call first.  Returns None.
         func.close():  Call last.  Returns Iterator of (key, value) or None
 
-    Expected return
+    Expected return::
         Iterator of (key, value) or None
 
     :param mapper: Function or class instance following the above spec
