@@ -8,7 +8,6 @@ hadoopy.cat function index.html
 hadoopy.counter function index.html
 hadoopy.status function index.html
 hadoopy.TypedBytesFile.close attribute index.html
-hadoopy.print_doc_quit function index.html
 hadoopy.TypedBytesFile.next attribute index.html
 hadoopy.Test.sort_kv method index.html
 hadoopy.launch_frozen function index.html

@@ -12,7 +12,6 @@ Welcome to Hadoopy's documentation!
 API
 ---
 .. autofunction:: hadoopy.run
-.. autofunction:: hadoopy.print_doc_quit
 .. autofunction:: hadoopy.status
 .. autofunction:: hadoopy.counter
 .. autofunction:: hadoopy.launch
