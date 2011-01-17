@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -12,12 +14,13 @@
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
         VERSION:     '.01',
-        COLLAPSE_MODINDEX: false,
+        COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Hadoopy v.01 documentation" href="#" /> 
   </head>
@@ -39,8 +42,10 @@
             
   <div class="section" id="welcome-to-hadoopy-s-documentation">
 <h1>Welcome to Hadoopy&#8217;s documentation!<a class="headerlink" href="#welcome-to-hadoopy-s-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
 <ul class="simple">
 </ul>
+</div>
 <dl class="function">
 <dt id="hadoopy.run">
 <tt class="descclassname">hadoopy.</tt><tt class="descname">run</tt><big>(</big><em>mapper=None</em>, <em>reducer=None</em>, <em>combiner=None</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#hadoopy.run" title="Permalink to this definition">¶</a></dt>
@@ -51,7 +56,7 @@ os.environ[&#8216;stream_map_input&#8217;] == &#8216;typedbytes&#8217;</p>
 <p>The command line switches added to your script (e.g., script.py) are
 python script.py map</p>
 <blockquote>
-Use the provided mapper</blockquote>
+<div>Use the provided mapper</div></blockquote>
 <dl class="docutils">
 <dt>python script.py reduce</dt>
 <dd>Use the provided reducer</dd>
@@ -84,10 +89,10 @@ func.close():  Call last.  Returns Iterator of (key, value) or None</dd>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><em>mapper</em> &#8211; Function or class instance following the above spec</li>
-<li><em>reducer</em> &#8211; Function or class instance following the above spec</li>
-<li><em>combiner</em> &#8211; Function or class instance following the above spec</li>
-<li><em>doc</em> &#8211; If specified, on error print this and call sys.exit(1)</li>
+<li><strong>mapper</strong> &#8211; Function or class instance following the above spec</li>
+<li><strong>reducer</strong> &#8211; Function or class instance following the above spec</li>
+<li><strong>combiner</strong> &#8211; Function or class instance following the above spec</li>
+<li><strong>doc</strong> &#8211; If specified, on error print this and call sys.exit(1)</li>
 </ul>
 </td>
 </tr>
@@ -138,7 +143,7 @@ out_name: Output path
 script_path: Path to the script (e.g., script.py)
 mapper: If True, the mapper is &#8220;script.py map&#8221;.</p>
 <blockquote>
-If string, the mapper is the value</blockquote>
+<div>If string, the mapper is the value</div></blockquote>
 <dl class="docutils">
 <dt>reducer: If True (default), the reducer is &#8220;script.py reduce&#8221;.</dt>
 <dd>If string, the reducer is the value</dd>
@@ -149,7 +154,7 @@ If string, the mapper is the value</blockquote>
 copy_script: If True, the script is added to the files list.
 files: Extra files (other than the script) (string or list).</p>
 <blockquote>
-NOTE: Hadoop copies the files into working directory (path errors!).</blockquote>
+<div>NOTE: Hadoop copies the files into working directory (path errors!).</div></blockquote>
 <p class="last">jobconfs: Extra jobconf parameters (string or list)
 cmdenvs: Extra cmdenv parameters (string or list)
 hstreaming: The full hadoop streaming path to call.
@@ -265,7 +270,8 @@ procs: Number of processes to use.</dd>
 <dd><dl class="attribute">
 <dt id="hadoopy.TypedBytesFile.next">
 <tt class="descname">next</tt><a class="headerlink" href="#hadoopy.TypedBytesFile.next" title="Permalink to this definition">¶</a></dt>
-<dd>x.next() -&gt; the next value, or raise StopIteration</dd></dl>
+<dd><p>x.next() -&gt; the next value, or raise StopIteration</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -277,24 +283,24 @@ procs: Number of processes to use.</dd>
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-            <h3>This Page</h3>
-            <ul class="this-page-menu">
-              <li><a href="_sources/index.txt"
-                     rel="nofollow">Show Source</a></li>
-            </ul>
-          <div id="searchbox" style="display: none">
-            <h3>Quick search</h3>
-              <form class="search" action="search.html" method="get">
-                <input type="text" name="q" size="18" />
-                <input type="submit" value="Go" />
-                <input type="hidden" name="check_keywords" value="yes" />
-                <input type="hidden" name="area" value="default" />
-              </form>
-              <p class="searchtip" style="font-size: 90%">
-              Enter search terms or a module, class or function name.
-              </p>
-          </div>
-          <script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -309,8 +315,8 @@ procs: Number of processes to use.</dd>
       </ul>
     </div>
     <div class="footer">
-      &copy; Copyright 2011, Brandyn White.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.6.
+        &copy; Copyright 2011, Brandyn White.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>
 </html>

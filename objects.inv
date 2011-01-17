@@ -1,17 +1,5 @@
-# Sphinx inventory version 1
+# Sphinx inventory version 2
 # Project: Hadoopy
 # Version: .01
-hadoopy.ls function index.html
-hadoopy.Test.groupby_kv method index.html
-hadoopy.cat function index.html
-hadoopy.counter function index.html
-hadoopy.status function index.html
-hadoopy.TypedBytesFile.next attribute index.html
-hadoopy.Test.sort_kv method index.html
-hadoopy.launch_frozen function index.html
-hadoopy.GroupedValues class index.html
-hadoopy.Test.shuffle_kv method index.html
-hadoopy.launch function index.html
-hadoopy.run function index.html
-hadoopy.TypedBytesFile class index.html
-hadoopy.Test class index.html
+# The remainder of this file is compressed using zlib.
+xÚ‘ÁJÄ@†ïûîµ…½îÑƒâA¯KÚI;ÅtR&‰ììÓ»µUÔ¼þóýáKfd?DG'ê÷’«vnÊÕ¸>ÔAGºr÷ìÐÝÍÑ¦ÇøCé#]*©ßÁ%[±Çx€7<ó”k’³Á¾³ØêÀÑíÜ—¹[W}rO(Z÷‰mjòáåu.¨ýï•–-*¦²ù¢ Vê’'ô×YQnÂ:âQç"¨¦¡1Å['-\à,]âÆ2¹¥RÆÞÎ÷Dÿdø¾{K rI?X×–~h™K²øŸëZÿ½ƒ}j
