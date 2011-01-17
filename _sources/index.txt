@@ -32,25 +32,26 @@ Welcome to Hadoopy's documentation!
         Freeze the script to a tar file specified by <tar_path>.  The extension may be .tar or .tar.gz.  All files are placed in the root of the tar. Files specified with -Z will be added to the tar root.  Additional cx_Freeze arguments may be passed in.
     
     **Specification of mapper/reducer/combiner**
-        Input Key/Value Types
-            For TypedBytes, the type will be the decoded typed
-            For Text, the type will be text assuming key0\\tvalue0\\nkey1\\tvalue1\\n
 
-        Output Key/Value Types
-            For TypedBytes, anything Pickle-able can be used
-            For Text, types are converted to string.  Note that neither may contain \\t or \\n as these are used in the encoding.  Output is key\\tvalue\\n
+    Input Key/Value Types
+        For TypedBytes, the type will be the decoded typed
+        For Text, the type will be text assuming key0\\tvalue0\\nkey1\\tvalue1\\n
+
+    Output Key/Value Types
+        For TypedBytes, anything Pickle-able can be used
+        For Text, types are converted to string.  Note that neither may contain \\t or \\n as these are used in the encoding.  Output is key\\tvalue\\n
     
-        Expected arguments
-            mapper(key, value) or mapper.map(key, value)
-            reducer(key, values) or reducer.reduce(key, values)
-            combiner(key, values) or combiner.combine(key, values)
+    Expected arguments
+        mapper(key, value) or mapper.map(key, value)
+        reducer(key, values) or reducer.reduce(key, values)
+        combiner(key, values) or combiner.combine(key, values)
 
-        Optional methods
-            func.configure(): Call first.  Returns None.
-            func.close():  Call last.  Returns Iterator of (key, value) or None
+    Optional methods
+        func.configure(): Call first.  Returns None.
+        func.close():  Call last.  Returns Iterator of (key, value) or None
 
-        Expected return
-            Iterator of (key, value) or None
+    Expected return
+        Iterator of (key, value) or None
 
     :param mapper: Function or class instance following the above spec
     :param reducer: Function or class instance following the above spec

@@ -64,8 +64,9 @@ os.environ[&#8216;stream_map_input&#8217;] == &#8216;typedbytes&#8217;</p>
 <dd>Use the provided combiner</dd>
 <dt>python script.py freeze &lt;tar_path&gt; &lt;-Zadd_file0 -Zadd_file1...&gt; &lt;cx_Freeze args&gt;</dt>
 <dd>Freeze the script to a tar file specified by &lt;tar_path&gt;.  The extension may be .tar or .tar.gz.  All files are placed in the root of the tar. Files specified with -Z will be added to the tar root.  Additional cx_Freeze arguments may be passed in.</dd>
-<dt><strong>Specification of mapper/reducer/combiner</strong></dt>
-<dd><dl class="first last docutils">
+</dl>
+<p><strong>Specification of mapper/reducer/combiner</strong></p>
+<dl class="docutils">
 <dt>Input Key/Value Types</dt>
 <dd>For TypedBytes, the type will be the decoded typed
 For Text, the type will be text assuming key0\tvalue0\nkey1\tvalue1\n</dd>
@@ -81,8 +82,6 @@ combiner(key, values) or combiner.combine(key, values)</dd>
 func.close():  Call last.  Returns Iterator of (key, value) or None</dd>
 <dt>Expected return</dt>
 <dd>Iterator of (key, value) or None</dd>
-</dl>
-</dd>
 </dl>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
