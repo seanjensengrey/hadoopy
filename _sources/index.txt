@@ -17,9 +17,8 @@ Welcome to Hadoopy's documentation!
 
     It is *highly* recommended that TypedBytes be used for all non-trivial tasks.  Keep in mind that the semantics of what you can safely emit from your functions is limited when using Text (i.e., no \\t or \\n).  You can use the base64 module to ensure that your output is clean.
 
-    **Command Interface**
-
-    The command line switches added to your script (e.g., script.py) are
+    | **Command Interface**
+    | The command line switches added to your script (e.g., script.py) are
 
     python script.py map
         Use the provided mapper
@@ -30,9 +29,8 @@ Welcome to Hadoopy's documentation!
     python script.py freeze <tar_path> <-Zadd_file0 -Zadd_file1...> <cx_Freeze args>
         Freeze the script to a tar file specified by <tar_path>.  The extension may be .tar or .tar.gz.  All files are placed in the root of the tar. Files specified with -Z will be added to the tar root.  Additional cx_Freeze arguments may be passed in.
     
-    **Specification of mapper/reducer/combiner**
-    
-    Input Key/Value Types
+    | **Specification of mapper/reducer/combiner** 
+    | Input Key/Value Types
         | For TypedBytes, the type will be the decoded typed
         | For Text, the type will be text assuming key0\\tvalue0\\nkey1\\tvalue1\\n
 

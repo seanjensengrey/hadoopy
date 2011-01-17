@@ -52,8 +52,10 @@
 <dd><p>This is to be called in all Hadoopy job&#8217;s.  Handles arguments passed in, calls the provided functions with input, and stores the output.</p>
 <p>TypedBytes are used if (os.environ[&#8216;stream_map_input&#8217;] == &#8216;typedbytes&#8217;) which is a jobconf variable set in all jobs Hadoop is using TypedBytes with.</p>
 <p>It is <em>highly</em> recommended that TypedBytes be used for all non-trivial tasks.  Keep in mind that the semantics of what you can safely emit from your functions is limited when using Text (i.e., no \t or \n).  You can use the base64 module to ensure that your output is clean.</p>
-<p><strong>Command Interface</strong></p>
-<p>The command line switches added to your script (e.g., script.py) are</p>
+<div class="line-block">
+<div class="line"><strong>Command Interface</strong></div>
+<div class="line">The command line switches added to your script (e.g., script.py) are</div>
+</div>
 <dl class="docutils">
 <dt>python script.py map</dt>
 <dd>Use the provided mapper</dd>
@@ -64,14 +66,13 @@
 <dt>python script.py freeze &lt;tar_path&gt; &lt;-Zadd_file0 -Zadd_file1...&gt; &lt;cx_Freeze args&gt;</dt>
 <dd>Freeze the script to a tar file specified by &lt;tar_path&gt;.  The extension may be .tar or .tar.gz.  All files are placed in the root of the tar. Files specified with -Z will be added to the tar root.  Additional cx_Freeze arguments may be passed in.</dd>
 </dl>
-<p><strong>Specification of mapper/reducer/combiner</strong></p>
-<dl class="docutils">
-<dt>Input Key/Value Types</dt>
-<dd><div class="first last line-block">
-<div class="line">For TypedBytes, the type will be the decoded typed</div>
-<div class="line">For Text, the type will be text assuming key0\tvalue0\nkey1\tvalue1\n</div>
+<div class="line-block">
+<div class="line"><strong>Specification of mapper/reducer/combiner</strong></div>
+<div class="line">Input Key/Value Types
+| For TypedBytes, the type will be the decoded typed
+| For Text, the type will be text assuming key0\tvalue0\nkey1\tvalue1\n</div>
 </div>
-</dd>
+<dl class="docutils">
 <dt>Output Key/Value Types</dt>
 <dd><div class="first last line-block">
 <div class="line">For TypedBytes, anything Pickle-able can be used</div>
