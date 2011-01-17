@@ -46,6 +46,33 @@
 <ul class="simple">
 </ul>
 </div>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>::</dt>
+<dd><p class="first">import hadoopy</p>
+<dl class="last docutils">
+<dt>def mapper(key, value):</dt>
+<dd><dl class="first last docutils">
+<dt>for word in value.split():</dt>
+<dd>yield word, 1</dd>
+</dl>
+</dd>
+<dt>def reducer(key, values):</dt>
+<dd><p class="first">accum = 0
+for count in values:</p>
+<blockquote>
+<div>accum += int(count)</div></blockquote>
+<p class="last">yield key, accum</p>
+</dd>
+<dt>if __name__ == &#8220;__main__&#8221;:</dt>
+<dd>hadoopy.run(mapper, reducer)</dd>
+</dl>
+</dd>
+</dl>
+</div>
+<div class="section" id="api">
+<h2>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="hadoopy.run">
 <tt class="descclassname">hadoopy.</tt><tt class="descname">run</tt><big>(</big><em>mapper=None</em>, <em>reducer=None</em>, <em>combiner=None</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#hadoopy.run" title="Permalink to this definition">¶</a></dt>
@@ -294,6 +321,7 @@ procs: Number of processes to use.</dd>
 </dd></dl>
 
 </div>
+</div>
 
 
           </div>
@@ -301,6 +329,15 @@ procs: Number of processes to use.</dd>
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Welcome to Hadoopy&#8217;s documentation!</a><ul>
+<li><a class="reference internal" href="#example">Example</a></li>
+<li><a class="reference internal" href="#api">API</a></li>
+</ul>
+</li>
+</ul>
+
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/index.txt"

@@ -6,8 +6,31 @@
 Welcome to Hadoopy's documentation!
 ===================================
 
+
+
 ..  toctree::
     :maxdepth: 2
+
+Example
+-------
+::
+    import hadoopy
+
+    def mapper(key, value):
+        for word in value.split():
+            yield word, 1
+
+    def reducer(key, values):
+        accum = 0
+        for count in values:
+            accum += int(count)
+        yield key, accum
+
+    if __name__ == "__main__":
+        hadoopy.run(mapper, reducer)
+
+API
+---
 
 ..  function:: hadoopy.run(mapper=None, reducer=None, combiner=None, **kw)
 
