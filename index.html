@@ -58,13 +58,12 @@ your functions is limited when using Text (i.e., no          or</p>
 </blockquote>
 <dl class="docutils">
 <dt>).  You can use</dt>
-<dd><blockquote class="first">
-<p>the base64 module to ensure that your output is clean.</p>
+<dd><p class="first">the base64 module to ensure that your output is clean.</p>
 <p>The command line switches added to your script (e.g., script.py) are
 python script.py map</p>
 <blockquote>
 Use the provided mapper</blockquote>
-<dl class="docutils">
+<dl class="last docutils">
 <dt>python script.py reduce</dt>
 <dd>Use the provided reducer</dd>
 <dt>python script.py combine</dt>
@@ -80,27 +79,17 @@ cx_Freeze arguments may be passed in.</dd>
 <dd><p class="first">For TypedBytes, the type will be the decoded typed
 For Text, the type will be text assuming</p>
 <blockquote class="last">
-<p>key0    value0</p>
-<p>key1    value1</p>
-</blockquote>
+key0tvalue0n
+key1tvalue1n</blockquote>
 </dd>
 <dt>Output Key/Value Types</dt>
 <dd><p class="first">For TypedBytes, anything Pickle-able can be used
 For Text, types are converted to string.  Note that neither may</p>
 <blockquote class="last">
-contain          or</blockquote>
-</dd>
-</dl>
-</dd>
-</dl>
-</blockquote>
-<dl class="last docutils">
-<dt>as these are used in the encoding.</dt>
-<dd><blockquote class="first">
-<blockquote>
+contain t or n as these are used in the encoding.
 Output is
-key     value</blockquote>
-<dl class="docutils">
+keytvaluen</blockquote>
+</dd>
 <dt>Expected arguments</dt>
 <dd>mapper(key, value) or mapper.map(key, value)
 reducer(key, values) or reducer.reduce(key, values)
@@ -111,8 +100,7 @@ func.close():  Call last.  Returns Iterator of (key, value) or None</dd>
 <dt>Expected return</dt>
 <dd>Iterator of (key, value) or None</dd>
 </dl>
-</blockquote>
-<dl class="last docutils">
+</dd>
 <dt>Args:</dt>
 <dd>mapper: Function or class instance following the above spec
 reducer: Function or class instance following the above spec
@@ -122,8 +110,6 @@ combiner: Function or class instance following the above spec</dd>
 <dt>Returns:</dt>
 <dd>True on error, else False (may not return if doc is set and
 there is an error)</dd>
-</dl>
-</dd>
 </dl>
 </dd>
 </dl>
