@@ -14,6 +14,7 @@ Welcome to Hadoopy's documentation!
 Example
 -------
 Hello Wordcount! ::
+
     import hadoopy
 
     def mapper(key, value):

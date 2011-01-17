@@ -48,28 +48,23 @@
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<dl class="docutils">
-<dt>Hello Wordcount! ::</dt>
-<dd><p class="first">import hadoopy</p>
-<dl class="last docutils">
-<dt>def mapper(key, value):</dt>
-<dd><dl class="first last docutils">
-<dt>for word in value.split():</dt>
-<dd>yield word, 1</dd>
-</dl>
-</dd>
-<dt>def reducer(key, values):</dt>
-<dd><p class="first">accum = 0
-for count in values:</p>
-<blockquote>
-<div>accum += int(count)</div></blockquote>
-<p class="last">yield key, accum</p>
-</dd>
-<dt>if __name__ == &#8220;__main__&#8221;:</dt>
-<dd>hadoopy.run(mapper, reducer)</dd>
-</dl>
-</dd>
-</dl>
+<p>Hello Wordcount!</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">hadoopy</span>
+
+<span class="k">def</span> <span class="nf">mapper</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">value</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>
+        <span class="k">yield</span> <span class="n">word</span><span class="p">,</span> <span class="mi">1</span>
+
+<span class="k">def</span> <span class="nf">reducer</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
+    <span class="n">accum</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+        <span class="n">accum</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+    <span class="k">yield</span> <span class="n">key</span><span class="p">,</span> <span class="n">accum</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">hadoopy</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">mapper</span><span class="p">,</span> <span class="n">reducer</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="api">
 <h2>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h2>
