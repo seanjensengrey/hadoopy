@@ -60,7 +60,7 @@ API
     :param reducer: Function or class instance following the above spec
     :param combiner: Function or class instance following the above spec
     :param doc: If specified, on error print this and call sys.exit(1)
-    :rtype True on error, else False (may not return if doc is set and
+    :rtype: True on error, else False (may not return if doc is set and
         there is an error)
 
 ..  autofunction:: hadoopy.status
