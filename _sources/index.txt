@@ -30,6 +30,30 @@ Hello Wordcount! ::
     if __name__ == "__main__":
         hadoopy.run(mapper, reducer)
 
+Simple test ::
+
+    > echo "a b c d e f" | python wc.py map
+    a   1
+    b   1
+    a   1
+    a   1
+    b   1
+    c   1
+
+    > echo "a b a a e f" | python wc.py map | sort
+    a   1
+    a   1
+    a   1
+    b   1
+    e   1
+    f   1
+
+    echo "a b a a e f" | python wc.py map | sort | python wc.py reduce
+    a   3
+    b   1
+    e   1
+    f   1
+
 API
 ---
 
