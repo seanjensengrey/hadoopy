@@ -46,12 +46,12 @@
 <dl class="function">
 <dt id="hadoopy.run">
 <tt class="descclassname">hadoopy.</tt><tt class="descname">run</tt><big>(</big><big>)</big><a class="headerlink" href="#hadoopy.run" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd>run(mapper=None, reducer=None, combiner=None, <a href="#id1"><span class="problematic" id="id2">**</span></a>kw)</dd></dl>
 
 <dl class="function">
 <dt id="hadoopy.print_doc_quit">
 <tt class="descclassname">hadoopy.</tt><tt class="descname">print_doc_quit</tt><big>(</big><big>)</big><a class="headerlink" href="#hadoopy.print_doc_quit" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd>print_doc_quit(doc)</dd></dl>
 
 <dl class="function">
 <dt id="hadoopy.status">
@@ -170,7 +170,12 @@ procs: Number of processes to use.</dd>
 <dl class="class">
 <dt id="hadoopy.GroupedValues">
 <em class="property">class </em><tt class="descclassname">hadoopy.</tt><tt class="descname">GroupedValues</tt><a class="headerlink" href="#hadoopy.GroupedValues" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="method">
+<dt id="hadoopy.GroupedValues.next">
+<tt class="descname">next</tt><big>(</big><big>)</big><a class="headerlink" href="#hadoopy.GroupedValues.next" title="Permalink to this definition">¶</a></dt>
+<dd>GroupedValues.next(self)</dd></dl>
+
+</dd></dl>
 
 <dl class="class">
 <dt id="hadoopy.Test">
@@ -216,10 +221,21 @@ procs: Number of processes to use.</dd>
 <dl class="class">
 <dt id="hadoopy.TypedBytesFile">
 <em class="property">class </em><tt class="descclassname">hadoopy.</tt><tt class="descname">TypedBytesFile</tt><a class="headerlink" href="#hadoopy.TypedBytesFile" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="attribute">
+<dd><p>TypedBytesFile(fn=None, mode=None)</p>
+<dl class="attribute">
+<dt id="hadoopy.TypedBytesFile.close">
+<tt class="descname">close</tt><a class="headerlink" href="#hadoopy.TypedBytesFile.close" title="Permalink to this definition">¶</a></dt>
+<dd>TypedBytesFile.close(self)</dd></dl>
+
+<dl class="attribute">
 <dt id="hadoopy.TypedBytesFile.next">
 <tt class="descname">next</tt><a class="headerlink" href="#hadoopy.TypedBytesFile.next" title="Permalink to this definition">¶</a></dt>
 <dd>x.next() -&gt; the next value, or raise StopIteration</dd></dl>
+
+<dl class="attribute">
+<dt id="hadoopy.TypedBytesFile.write">
+<tt class="descname">write</tt><a class="headerlink" href="#hadoopy.TypedBytesFile.write" title="Permalink to this definition">¶</a></dt>
+<dd>TypedBytesFile.write(self, kv)</dd></dl>
 
 </dd></dl>
 
