@@ -67,18 +67,30 @@
 <p><strong>Specification of mapper/reducer/combiner</strong></p>
 <dl class="docutils">
 <dt>Input Key/Value Types</dt>
-<dd><a href="#id1"><span class="problematic" id="id2">|</span></a>For TypedBytes, the type will be the decoded typed
-<a href="#id3"><span class="problematic" id="id4">|</span></a>For Text, the type will be text assuming key0\tvalue0\nkey1\tvalue1\n</dd>
+<dd><div class="first last line-block">
+<div class="line">For TypedBytes, the type will be the decoded typed</div>
+<div class="line">For Text, the type will be text assuming key0\tvalue0\nkey1\tvalue1\n</div>
+</div>
+</dd>
 <dt>Output Key/Value Types</dt>
-<dd><a href="#id5"><span class="problematic" id="id6">|</span></a>For TypedBytes, anything Pickle-able can be used
-<a href="#id7"><span class="problematic" id="id8">|</span></a>For Text, types are converted to string.  Note that neither may contain \t or \n as these are used in the encoding.  Output is key\tvalue\n</dd>
+<dd><div class="first last line-block">
+<div class="line">For TypedBytes, anything Pickle-able can be used</div>
+<div class="line">For Text, types are converted to string.  Note that neither may contain \t or \n as these are used in the encoding.  Output is key\tvalue\n</div>
+</div>
+</dd>
 <dt>Expected arguments</dt>
-<dd><a href="#id9"><span class="problematic" id="id10">|</span></a>mapper(key, value) or mapper.map(key, value)
-<a href="#id11"><span class="problematic" id="id12">|</span></a>reducer(key, values) or reducer.reduce(key, values)
-<a href="#id13"><span class="problematic" id="id14">|</span></a>combiner(key, values) or combiner.combine(key, values)</dd>
+<dd><div class="first last line-block">
+<div class="line">mapper(key, value) or mapper.map(key, value)</div>
+<div class="line">reducer(key, values) or reducer.reduce(key, values)</div>
+<div class="line">combiner(key, values) or combiner.combine(key, values)</div>
+</div>
+</dd>
 <dt>Optional methods</dt>
-<dd><a href="#id15"><span class="problematic" id="id16">|</span></a>func.configure(): Call first.  Returns None.
-<a href="#id17"><span class="problematic" id="id18">|</span></a>func.close():  Call last.  Returns Iterator of (key, value) or None</dd>
+<dd><div class="first last line-block">
+<div class="line">func.configure(): Call first.  Returns None.</div>
+<div class="line">func.close():  Call last.  Returns Iterator of (key, value) or None</div>
+</div>
+</dd>
 <dt>Expected return</dt>
 <dd>Iterator of (key, value) or None</dd>
 </dl>

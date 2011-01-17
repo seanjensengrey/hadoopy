@@ -33,21 +33,21 @@ Welcome to Hadoopy's documentation!
     **Specification of mapper/reducer/combiner**
     
     Input Key/Value Types
-        |For TypedBytes, the type will be the decoded typed
-        |For Text, the type will be text assuming key0\\tvalue0\\nkey1\\tvalue1\\n
+        | For TypedBytes, the type will be the decoded typed
+        | For Text, the type will be text assuming key0\\tvalue0\\nkey1\\tvalue1\\n
 
     Output Key/Value Types
-        |For TypedBytes, anything Pickle-able can be used
-        |For Text, types are converted to string.  Note that neither may contain \\t or \\n as these are used in the encoding.  Output is key\\tvalue\\n
+        | For TypedBytes, anything Pickle-able can be used
+        | For Text, types are converted to string.  Note that neither may contain \\t or \\n as these are used in the encoding.  Output is key\\tvalue\\n
     
     Expected arguments
-        |mapper(key, value) or mapper.map(key, value)
-        |reducer(key, values) or reducer.reduce(key, values)
-        |combiner(key, values) or combiner.combine(key, values)
+        | mapper(key, value) or mapper.map(key, value)
+        | reducer(key, values) or reducer.reduce(key, values)
+        | combiner(key, values) or combiner.combine(key, values)
 
     Optional methods
-        |func.configure(): Call first.  Returns None.
-        |func.close():  Call last.  Returns Iterator of (key, value) or None
+        | func.configure(): Call first.  Returns None.
+        | func.close():  Call last.  Returns Iterator of (key, value) or None
 
     Expected return
         Iterator of (key, value) or None
