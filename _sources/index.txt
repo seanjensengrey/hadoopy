@@ -18,6 +18,7 @@ Welcome to Hadoopy's documentation!
     It is _highly_ recommended that TypedBytes be used for all non-trivial tasks.  Keep in mind that the semantics of what you can safely emit from your functions is limited when using Text (i.e., no \\t or \\n).  You can use the base64 module to ensure that your output is clean.
 
     The command line switches added to your script (e.g., script.py) are
+
     python script.py map
         Use the provided mapper
     python script.py reduce
