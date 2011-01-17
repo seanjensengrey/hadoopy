@@ -40,7 +40,13 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="welcome-to-hadoopy-s-documentation">
+  <dl class="docutils">
+<dt>1;2703;0c..  Hadoopy documentation master file, created by</dt>
+<dd>sphinx-quickstart on Sat Jan 15 20:41:41 2011.
+You can adapt this file completely to your liking, but it should at least
+contain the root <cite>toctree</cite> directive.</dd>
+</dl>
+<div class="section" id="welcome-to-hadoopy-s-documentation">
 <h1>Welcome to Hadoopy&#8217;s documentation!<a class="headerlink" href="#welcome-to-hadoopy-s-documentation" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul class="simple">
@@ -50,7 +56,7 @@
 <dt id="hadoopy.run">
 <tt class="descclassname">hadoopy.</tt><tt class="descname">run</tt><big>(</big><em>mapper=None</em>, <em>reducer=None</em>, <em>combiner=None</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#hadoopy.run" title="Permalink to this definition">¶</a></dt>
 <dd><p>This is to be called in all Hadoopy job&#8217;s.  Handles arguments passed in, calls the provided functions with input, and stores the output.</p>
-<p>TypedBytes are used if os.environ[&#8216;stream_map_input&#8217;] == &#8216;typedbytes&#8217;</p>
+<p>TypedBytes are used if (os.environ[&#8216;stream_map_input&#8217;] == &#8216;typedbytes&#8217;) which is a jobconf variable set in all jobs Hadoop is using TypedBytes with.</p>
 <p>It is <em>highly</em> recommended that TypedBytes be used for all non-trivial tasks.  Keep in mind that the semantics of what you can safely emit from your functions is limited when using Text (i.e., no \t or \n).  You can use the base64 module to ensure that your output is clean.</p>
 <p><strong>Command Interface</strong></p>
 <p>The command line switches added to your script (e.g., script.py) are</p>

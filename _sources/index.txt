@@ -1,4 +1,4 @@
-..  Hadoopy documentation master file, created by
+1;2703;0c..  Hadoopy documentation master file, created by
     sphinx-quickstart on Sat Jan 15 20:41:41 2011.
     You can adapt this file completely to your liking, but it should at least
     contain the root `toctree` directive.
@@ -13,7 +13,7 @@ Welcome to Hadoopy's documentation!
 
     This is to be called in all Hadoopy job's.  Handles arguments passed in, calls the provided functions with input, and stores the output.
 
-    TypedBytes are used if os.environ['stream_map_input'] == 'typedbytes'
+    TypedBytes are used if (os.environ['stream_map_input'] == 'typedbytes') which is a jobconf variable set in all jobs Hadoop is using TypedBytes with.
 
     It is *highly* recommended that TypedBytes be used for all non-trivial tasks.  Keep in mind that the semantics of what you can safely emit from your functions is limited when using Text (i.e., no \\t or \\n).  You can use the base64 module to ensure that your output is clean.
 
