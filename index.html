@@ -45,15 +45,16 @@
 <h2>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="hadoopy.run">
-<tt class="descclassname">hadoopy.</tt><tt class="descname">run</tt><big>(</big><big>)</big><a class="headerlink" href="#hadoopy.run" title="Permalink to this definition">¶</a></dt>
-<dd><p>Hadoopy entrance function</p>
-<p>This is to be called in all Hadoopy job&#8217;s.  Handles arguments passed in,
-calls the provided functions with input, and stores the output.</p>
-<p>TypedBytes are used if the following is True
+<tt class="descclassname">hadoopy.</tt><tt class="descname">run</tt><big>(</big><em>mapper=None</em>, <em>reducer=None</em>, <em>combiner=None</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#hadoopy.run" title="Permalink to this definition">¶</a></dt>
+<dt>
+<tt class="descname">This is to be called in all Hadoopy job's.  Handles arguments passed in,</tt></dt>
+<dt>
+<tt class="descname">calls the provided functions with input, and stores the output.</tt></dt>
+<dd><p>TypedBytes are used if the following is True
 os.environ[&#8216;stream_map_input&#8217;] == &#8216;typedbytes&#8217;</p>
 <p>It is _highly_ recommended that TypedBytes be used for all non-trivial
 tasks.  Keep in mind that the semantics of what you can safely emit from
-your functions is limited when using Text (i.e., no t or n).  You can use
+your functions is limited when using Text (i.e., no \t or \n).  You can use
 the base64 module to ensure that your output is clean.</p>
 <p>The command line switches added to your script (e.g., script.py) are
 python script.py map</p>
@@ -75,16 +76,16 @@ cx_Freeze arguments may be passed in.</dd>
 <dd><p class="first">For TypedBytes, the type will be the decoded typed
 For Text, the type will be text assuming</p>
 <blockquote class="last">
-key0tvalue0n
-key1tvalue1n</blockquote>
+key0\tvalue0\n
+key1\tvalue1\n</blockquote>
 </dd>
 <dt>Output Key/Value Types</dt>
 <dd><p class="first">For TypedBytes, anything Pickle-able can be used
 For Text, types are converted to string.  Note that neither may</p>
 <blockquote class="last">
-contain t or n as these are used in the encoding.
+contain \t or \n as these are used in the encoding.
 Output is
-keytvaluen</blockquote>
+key\tvalue\n</blockquote>
 </dd>
 <dt>Expected arguments</dt>
 <dd>mapper(key, value) or mapper.map(key, value)
@@ -97,15 +98,24 @@ func.close():  Call last.  Returns Iterator of (key, value) or None</dd>
 <dd>Iterator of (key, value) or None</dd>
 </dl>
 </dd>
-<dt>Args:</dt>
-<dd>mapper: Function or class instance following the above spec
-reducer: Function or class instance following the above spec
-combiner: Function or class instance following the above spec</dd>
-<dt>Kwargs:</dt>
-<dd>doc: If specified, on error print this and call sys.exit(1)</dd>
-<dt>Returns:</dt>
-<dd>True on error, else False (may not return if doc is set and
-there is an error)</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><em>mapper</em> &#8211; Function or class instance following the above spec</li>
+<li><em>reducer</em> &#8211; Function or class instance following the above spec</li>
+<li><em>combiner</em> &#8211; Function or class instance following the above spec</li>
+<li><em>doc</em> &#8211; If specified, on error print this and call sys.exit(1)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>:rtype True on error, else False (may not return if doc is set and</dt>
+<dd>there is an error)</dd>
 </dl>
 </dd></dl>
 
