@@ -46,14 +46,10 @@
 <dl class="function">
 <dt id="hadoopy.run">
 <tt class="descclassname">hadoopy.</tt><tt class="descname">run</tt><big>(</big><em>mapper=None</em>, <em>reducer=None</em>, <em>combiner=None</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#hadoopy.run" title="Permalink to this definition">¶</a></dt>
-<dd><p>This is to be called in all Hadoopy job&#8217;s.  Handles arguments passed in,
-calls the provided functions with input, and stores the output.</p>
+<dd><p>This is to be called in all Hadoopy job&#8217;s.  Handles arguments passed in, calls the provided functions with input, and stores the output.</p>
 <p>TypedBytes are used if the following is True
 os.environ[&#8216;stream_map_input&#8217;] == &#8216;typedbytes&#8217;</p>
-<p>It is _highly_ recommended that TypedBytes be used for all non-trivial
-tasks.  Keep in mind that the semantics of what you can safely emit from
-your functions is limited when using Text (i.e., no \t or \n).  You can use
-the base64 module to ensure that your output is clean.</p>
+<p>It is _highly_ recommended that TypedBytes be used for all non-trivial tasks.  Keep in mind that the semantics of what you can safely emit from your functions is limited when using Text (i.e., no \t or \n).  You can use the base64 module to ensure that your output is clean.</p>
 <p>The command line switches added to your script (e.g., script.py) are
 python script.py map</p>
 <blockquote>
@@ -64,10 +60,7 @@ Use the provided mapper</blockquote>
 <dt>python script.py combine</dt>
 <dd>Use the provided combiner</dd>
 <dt>python script.py freeze &lt;tar_path&gt; &lt;-Zadd_file0 -Zadd_file1...&gt; &lt;cx_Freeze args&gt;</dt>
-<dd>Freeze the script to a tar file specified by &lt;tar_path&gt;.  The extension
-may be .tar or .tar.gz.  All files are placed in the root of the tar.
-Files specified with -Z will be added to the tar root.  Additional
-cx_Freeze arguments may be passed in.</dd>
+<dd>Freeze the script to a tar file specified by &lt;tar_path&gt;.  The extension may be .tar or .tar.gz.  All files are placed in the root of the tar. Files specified with -Z will be added to the tar root.  Additional cx_Freeze arguments may be passed in.</dd>
 <dt>Specification of mapper/reducer/combiner</dt>
 <dd><dl class="first last docutils">
 <dt>Input Key/Value Types</dt>

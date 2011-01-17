@@ -13,16 +13,12 @@ API
 ---
 ..  function:: hadoopy.run(mapper=None, reducer=None, combiner=None, **kw)
 
-    This is to be called in all Hadoopy job's.  Handles arguments passed in,
-    calls the provided functions with input, and stores the output.
+    This is to be called in all Hadoopy job's.  Handles arguments passed in, calls the provided functions with input, and stores the output.
 
     TypedBytes are used if the following is True
     os.environ['stream_map_input'] == 'typedbytes'
 
-    It is _highly_ recommended that TypedBytes be used for all non-trivial
-    tasks.  Keep in mind that the semantics of what you can safely emit from
-    your functions is limited when using Text (i.e., no \\t or \\n).  You can use
-    the base64 module to ensure that your output is clean.
+    It is _highly_ recommended that TypedBytes be used for all non-trivial tasks.  Keep in mind that the semantics of what you can safely emit from your functions is limited when using Text (i.e., no \\t or \\n).  You can use the base64 module to ensure that your output is clean.
 
     The command line switches added to your script (e.g., script.py) are
     python script.py map
@@ -32,10 +28,7 @@ API
     python script.py combine
         Use the provided combiner
     python script.py freeze <tar_path> <-Zadd_file0 -Zadd_file1...> <cx_Freeze args>
-        Freeze the script to a tar file specified by <tar_path>.  The extension
-        may be .tar or .tar.gz.  All files are placed in the root of the tar.
-        Files specified with -Z will be added to the tar root.  Additional
-        cx_Freeze arguments may be passed in.
+        Freeze the script to a tar file specified by <tar_path>.  The extension may be .tar or .tar.gz.  All files are placed in the root of the tar. Files specified with -Z will be added to the tar root.  Additional cx_Freeze arguments may be passed in.
     
     Specification of mapper/reducer/combiner
         Input Key/Value Types
