@@ -49,7 +49,11 @@
 <dl class="function">
 <dt id="hadoopy.run">
 <tt class="descclassname">hadoopy.</tt><tt class="descname">run</tt><big>(</big><em>mapper=None</em>, <em>reducer=None</em>, <em>combiner=None</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#hadoopy.run" title="Permalink to this definition">¶</a></dt>
-<dd><p>This is to be called in all Hadoopy job&#8217;s.  Handles arguments passed in, calls the provided functions with input, and stores the output.</p>
+<dd></dd></dl>
+
+<dl class="docutils">
+<dt>::</dt>
+<dd><p class="first">This is to be called in all Hadoopy job&#8217;s.  Handles arguments passed in, calls the provided functions with input, and stores the output.</p>
 <p>TypedBytes are used if the following is True
 os.environ[&#8216;stream_map_input&#8217;] == &#8216;typedbytes&#8217;</p>
 <p>It is _highly_ recommended that TypedBytes be used for all non-trivial tasks.  Keep in mind that the semantics of what you can safely emit from your functions is limited when using Text (i.e., no \t or \n).  You can use the base64 module to ensure that your output is clean.</p>
@@ -84,26 +88,25 @@ func.close():  Call last.  Returns Iterator of (key, value) or None</dd>
 </dl>
 </dd>
 </dl>
-<table class="docutils field-list" frame="void" rules="none">
+<table class="last docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>mapper</strong> &#8211; Function or class instance following the above spec</li>
-<li><strong>reducer</strong> &#8211; Function or class instance following the above spec</li>
-<li><strong>combiner</strong> &#8211; Function or class instance following the above spec</li>
-<li><strong>doc</strong> &#8211; If specified, on error print this and call sys.exit(1)</li>
-</ul>
-</td>
+<tr class="field"><th class="field-name">param mapper:</th><td class="field-body">Function or class instance following the above spec</td>
 </tr>
-<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">True on error, else False (may not return if doc is set and
-there is an error)</p>
-</td>
+<tr class="field"><th class="field-name">param reducer:</th><td class="field-body">Function or class instance following the above spec</td>
+</tr>
+<tr class="field"><th class="field-name">param combiner:</th><td class="field-body">Function or class instance following the above spec</td>
+</tr>
+<tr class="field"><th class="field-name">param doc:</th><td class="field-body">If specified, on error print this and call sys.exit(1)</td>
+</tr>
+<tr class="field"><th class="field-name">rtype:</th><td class="field-body">True on error, else False (may not return if doc is set and
+there is an error)</td>
 </tr>
 </tbody>
 </table>
-</dd></dl>
-
+</dd>
+</dl>
 <dl class="function">
 <dt id="hadoopy.status">
 <tt class="descclassname">hadoopy.</tt><tt class="descname">status</tt><big>(</big><em>msg</em>, <em>err=None</em><big>)</big><a class="headerlink" href="#hadoopy.status" title="Permalink to this definition">¶</a></dt>
