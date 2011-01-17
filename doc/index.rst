@@ -6,10 +6,11 @@
 Welcome to Hadoopy's documentation!
 ===================================
 
-API
---
 ..  toctree::
     :maxdepth: 2
+
+API
+--
 
 ..  function:: hadoopy.run(mapper=None, reducer=None, combiner=None, **kw)
 
