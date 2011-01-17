@@ -30,29 +30,27 @@ Hello Wordcount! ::
     if __name__ == "__main__":
         hadoopy.run(mapper, reducer)
 
-Simple test ::
+Command line test ::
+    $ echo "a b a a b c" | python wc2.py map
+    a    1
+    b    1
+    a    1
+    a    1
+    b    1
+    c    1
 
-    $ echo "a b c d e f" | python wc.py map
-    a   1
-    b   1
-    a   1
-    a   1
-    b   1
-    c   1
+    $ echo "a b a a b c" | python wc2.py map | sort
+    a    1
+    a    1
+    a    1
+    b    1
+    b    1
+    c    1
 
-    $ echo "a b a a e f" | python wc.py map | sort
-    a   1
-    a   1
-    a   1
-    b   1
-    e   1
-    f   1
-
-    $ echo "a b a a e f" | python wc.py map | sort | python wc.py reduce
-    a   3
-    b   1
-    e   1
-    f   1
+    $ echo "a b a a b c" | python wc2.py map | sort | python wc2.py reduce
+    a    3
+    b    2
+    c    1
 
 API
 ---
