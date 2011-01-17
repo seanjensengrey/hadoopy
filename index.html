@@ -65,28 +65,28 @@
     <span class="n">hadoopy</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">mapper</span><span class="p">,</span> <span class="n">reducer</span><span class="p">)</span>
 </pre></div>
 </div>
-<dl class="docutils">
-<dt>Command line test ::</dt>
-<dd><p class="first">$ echo &#8220;a b a a b c&#8221; | python wc2.py map
+<p>Command line test</p>
+<div class="highlight-python"><pre>$ echo "a b a a b c" | python wc2.py map
 a    1
 b    1
 a    1
 a    1
 b    1
-c    1</p>
-<p>$ echo &#8220;a b a a b c&#8221; | python wc2.py map | sort
+c    1
+
+$ echo "a b a a b c" | python wc2.py map | sort
 a    1
 a    1
 a    1
 b    1
 b    1
-c    1</p>
-<p class="last">$ echo &#8220;a b a a b c&#8221; | python wc2.py map | sort | python wc2.py reduce
+c    1
+
+$ echo "a b a a b c" | python wc2.py map | sort | python wc2.py reduce
 a    3
 b    2
-c    1</p>
-</dd>
-</dl>
+c    1</pre>
+</div>
 </div>
 <div class="section" id="api">
 <h2>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h2>

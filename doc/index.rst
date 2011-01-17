@@ -31,6 +31,7 @@ Hello Wordcount! ::
         hadoopy.run(mapper, reducer)
 
 Command line test ::
+
     $ echo "a b a a b c" | python wc2.py map
     a    1
     b    1
