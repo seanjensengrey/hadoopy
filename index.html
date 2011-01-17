@@ -46,11 +46,9 @@
 <dl class="function">
 <dt id="hadoopy.run">
 <tt class="descclassname">hadoopy.</tt><tt class="descname">run</tt><big>(</big><em>mapper=None</em>, <em>reducer=None</em>, <em>combiner=None</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#hadoopy.run" title="Permalink to this definition">¶</a></dt>
-<dt>
-<tt class="descname">This is to be called in all Hadoopy job's.  Handles arguments passed in,</tt></dt>
-<dt>
-<tt class="descname">calls the provided functions with input, and stores the output.</tt></dt>
-<dd><p>TypedBytes are used if the following is True
+<dd><p>This is to be called in all Hadoopy job&#8217;s.  Handles arguments passed in,
+calls the provided functions with input, and stores the output.</p>
+<p>TypedBytes are used if the following is True
 os.environ[&#8216;stream_map_input&#8217;] == &#8216;typedbytes&#8217;</p>
 <p>It is _highly_ recommended that TypedBytes be used for all non-trivial
 tasks.  Keep in mind that the semantics of what you can safely emit from

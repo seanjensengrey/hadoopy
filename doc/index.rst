@@ -12,6 +12,7 @@ Welcome to Hadoopy's documentation!
 API
 ---
 ..  function:: hadoopy.run(mapper=None, reducer=None, combiner=None, **kw)
+
     This is to be called in all Hadoopy job's.  Handles arguments passed in,
     calls the provided functions with input, and stores the output.
 
