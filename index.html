@@ -46,7 +46,88 @@
 <dl class="function">
 <dt id="hadoopy.run">
 <tt class="descclassname">hadoopy.</tt><tt class="descname">run</tt><big>(</big><big>)</big><a class="headerlink" href="#hadoopy.run" title="Permalink to this definition">¶</a></dt>
-<dd>run(mapper=None, reducer=None, combiner=None, <a href="#id1"><span class="problematic" id="id2">**</span></a>kw)</dd></dl>
+<dd><p>Hadoopy entrance function</p>
+<blockquote>
+<p>This is to be called in all Hadoopy job&#8217;s.  Handles arguments passed in,
+calls the provided functions with input, and stores the output.</p>
+<p>TypedBytes are used if the following is True
+os.environ[&#8216;stream_map_input&#8217;] == &#8216;typedbytes&#8217;</p>
+<p>It is _highly_ recommended that TypedBytes be used for all non-trivial
+tasks.  Keep in mind that the semantics of what you can safely emit from
+your functions is limited when using Text (i.e., no          or</p>
+</blockquote>
+<dl class="docutils">
+<dt>).  You can use</dt>
+<dd><blockquote class="first">
+<p>the base64 module to ensure that your output is clean.</p>
+<p>The command line switches added to your script (e.g., script.py) are
+python script.py map</p>
+<blockquote>
+Use the provided mapper</blockquote>
+<dl class="docutils">
+<dt>python script.py reduce</dt>
+<dd>Use the provided reducer</dd>
+<dt>python script.py combine</dt>
+<dd>Use the provided combiner</dd>
+<dt>python script.py freeze &lt;tar_path&gt; &lt;-Zadd_file0 -Zadd_file1...&gt; &lt;cx_Freeze args&gt;</dt>
+<dd>Freeze the script to a tar file specified by &lt;tar_path&gt;.  The extension
+may be .tar or .tar.gz.  All files are placed in the root of the tar.
+Files specified with -Z will be added to the tar root.  Additional
+cx_Freeze arguments may be passed in.</dd>
+<dt>Specification of mapper/reducer/combiner</dt>
+<dd><dl class="first last docutils">
+<dt>Input Key/Value Types</dt>
+<dd><p class="first">For TypedBytes, the type will be the decoded typed
+For Text, the type will be text assuming</p>
+<blockquote class="last">
+<p>key0    value0</p>
+<p>key1    value1</p>
+</blockquote>
+</dd>
+<dt>Output Key/Value Types</dt>
+<dd><p class="first">For TypedBytes, anything Pickle-able can be used
+For Text, types are converted to string.  Note that neither may</p>
+<blockquote class="last">
+contain          or</blockquote>
+</dd>
+</dl>
+</dd>
+</dl>
+</blockquote>
+<dl class="last docutils">
+<dt>as these are used in the encoding.</dt>
+<dd><blockquote class="first">
+<blockquote>
+Output is
+key     value</blockquote>
+<dl class="docutils">
+<dt>Expected arguments</dt>
+<dd>mapper(key, value) or mapper.map(key, value)
+reducer(key, values) or reducer.reduce(key, values)
+combiner(key, values) or combiner.combine(key, values)</dd>
+<dt>Optional methods</dt>
+<dd>func.configure(): Call first.  Returns None.
+func.close():  Call last.  Returns Iterator of (key, value) or None</dd>
+<dt>Expected return</dt>
+<dd>Iterator of (key, value) or None</dd>
+</dl>
+</blockquote>
+<dl class="last docutils">
+<dt>Args:</dt>
+<dd>mapper: Function or class instance following the above spec
+reducer: Function or class instance following the above spec
+combiner: Function or class instance following the above spec</dd>
+<dt>Kwargs:</dt>
+<dd>doc: If specified, on error print this and call sys.exit(1)</dd>
+<dt>Returns:</dt>
+<dd>True on error, else False (may not return if doc is set and
+there is an error)</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="function">
 <dt id="hadoopy.status">
@@ -165,12 +246,7 @@ procs: Number of processes to use.</dd>
 <dl class="class">
 <dt id="hadoopy.GroupedValues">
 <em class="property">class </em><tt class="descclassname">hadoopy.</tt><tt class="descname">GroupedValues</tt><a class="headerlink" href="#hadoopy.GroupedValues" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="method">
-<dt id="hadoopy.GroupedValues.next">
-<tt class="descname">next</tt><big>(</big><big>)</big><a class="headerlink" href="#hadoopy.GroupedValues.next" title="Permalink to this definition">¶</a></dt>
-<dd>GroupedValues.next(self)</dd></dl>
-
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="class">
 <dt id="hadoopy.Test">
@@ -216,21 +292,10 @@ procs: Number of processes to use.</dd>
 <dl class="class">
 <dt id="hadoopy.TypedBytesFile">
 <em class="property">class </em><tt class="descclassname">hadoopy.</tt><tt class="descname">TypedBytesFile</tt><a class="headerlink" href="#hadoopy.TypedBytesFile" title="Permalink to this definition">¶</a></dt>
-<dd><p>TypedBytesFile(fn=None, mode=None)</p>
-<dl class="attribute">
-<dt id="hadoopy.TypedBytesFile.close">
-<tt class="descname">close</tt><a class="headerlink" href="#hadoopy.TypedBytesFile.close" title="Permalink to this definition">¶</a></dt>
-<dd>TypedBytesFile.close(self)</dd></dl>
-
-<dl class="attribute">
+<dd><dl class="attribute">
 <dt id="hadoopy.TypedBytesFile.next">
 <tt class="descname">next</tt><a class="headerlink" href="#hadoopy.TypedBytesFile.next" title="Permalink to this definition">¶</a></dt>
 <dd>x.next() -&gt; the next value, or raise StopIteration</dd></dl>
-
-<dl class="attribute">
-<dt id="hadoopy.TypedBytesFile.write">
-<tt class="descname">write</tt><a class="headerlink" href="#hadoopy.TypedBytesFile.write" title="Permalink to this definition">¶</a></dt>
-<dd>TypedBytesFile.write(self, kv)</dd></dl>
 
 </dd></dl>
 
