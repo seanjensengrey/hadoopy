@@ -65,24 +65,26 @@
     <span class="n">hadoopy</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">mapper</span><span class="p">,</span> <span class="n">reducer</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Command line test</p>
-<div class="highlight-python"><pre>$ echo "a b a a b c" | python wc2.py map
+<p>Command line test (map)</p>
+<div class="highlight-python"><pre>$ echo "a b a a b c" | python wc.py map
 a    1
 b    1
 a    1
 a    1
 b    1
-c    1
-
-$ echo "a b a a b c" | python wc2.py map | sort
+c    1</pre>
+</div>
+<p>Command line test (map/sort)</p>
+<div class="highlight-python"><pre>$ echo "a b a a b c" | python wc.py map | sort
 a    1
 a    1
 a    1
 b    1
 b    1
-c    1
-
-$ echo "a b a a b c" | python wc2.py map | sort | python wc2.py reduce
+c    1</pre>
+</div>
+<p>Command line test (map/sort/reduce)</p>
+<div class="highlight-python"><pre>$ echo "a b a a b c" | python wc.py map | sort | python wc.py reduce
 a    3
 b    2
 c    1</pre>

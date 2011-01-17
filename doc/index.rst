@@ -30,9 +30,9 @@ Hello Wordcount! ::
     if __name__ == "__main__":
         hadoopy.run(mapper, reducer)
 
-Command line test ::
+Command line test (map) ::
 
-    $ echo "a b a a b c" | python wc2.py map
+    $ echo "a b a a b c" | python wc.py map
     a    1
     b    1
     a    1
@@ -40,7 +40,9 @@ Command line test ::
     b    1
     c    1
 
-    $ echo "a b a a b c" | python wc2.py map | sort
+Command line test (map/sort) ::
+
+    $ echo "a b a a b c" | python wc.py map | sort
     a    1
     a    1
     a    1
@@ -48,7 +50,9 @@ Command line test ::
     b    1
     c    1
 
-    $ echo "a b a a b c" | python wc2.py map | sort | python wc2.py reduce
+Command line test (map/sort/reduce) ::
+
+    $ echo "a b a a b c" | python wc.py map | sort | python wc.py reduce
     a    3
     b    2
     c    1
