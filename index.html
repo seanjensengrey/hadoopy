@@ -71,27 +71,27 @@ contain the root <cite>toctree</cite> directive.</dd>
 <dd>Freeze the script to a tar file specified by &lt;tar_path&gt;.  The extension may be .tar or .tar.gz.  All files are placed in the root of the tar. Files specified with -Z will be added to the tar root.  Additional cx_Freeze arguments may be passed in.</dd>
 </dl>
 <p><strong>Specification of mapper/reducer/combiner</strong></p>
-<p>Input Key/Value Types</p>
-<div class="highlight-python"><pre>For TypedBytes, the type will be the decoded typed
-For Text, the type will be text assuming key0\\tvalue0\\nkey1\\tvalue1\\n</pre>
-</div>
-<p>Output Key/Value Types</p>
-<div class="highlight-python"><pre>For TypedBytes, anything Pickle-able can be used
-For Text, types are converted to string.  Note that neither may contain \\t or \\n as these are used in the encoding.  Output is key\\tvalue\\n</pre>
-</div>
-<p>Expected arguments</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">mapper</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="ow">or</span> <span class="n">mapper</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
-<span class="n">reducer</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span> <span class="ow">or</span> <span class="n">reducer</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
-<span class="n">combiner</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span> <span class="ow">or</span> <span class="n">combiner</span><span class="o">.</span><span class="n">combine</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Optional methods</p>
-<div class="highlight-python"><pre>func.configure(): Call first.  Returns None.
-func.close():  Call last.  Returns Iterator of (key, value) or None</pre>
-</div>
-<p>Expected return</p>
-<div class="highlight-python"><pre>Iterator of (key, value) or None</pre>
-</div>
+<dl class="docutils">
+<dt>Input Key/Value Types</dt>
+<dd><p class="first">For TypedBytes, the type will be the decoded typed</p>
+<p class="last">For Text, the type will be text assuming key0\tvalue0\nkey1\tvalue1\n</p>
+</dd>
+<dt>Output Key/Value Types</dt>
+<dd><p class="first">For TypedBytes, anything Pickle-able can be used</p>
+<p class="last">For Text, types are converted to string.  Note that neither may contain \t or \n as these are used in the encoding.  Output is key\tvalue\n</p>
+</dd>
+<dt>Expected arguments</dt>
+<dd><p class="first">mapper(key, value) or mapper.map(key, value)</p>
+<p>reducer(key, values) or reducer.reduce(key, values)</p>
+<p class="last">combiner(key, values) or combiner.combine(key, values)</p>
+</dd>
+<dt>Optional methods</dt>
+<dd><p class="first">func.configure(): Call first.  Returns None.</p>
+<p class="last">func.close():  Call last.  Returns Iterator of (key, value) or None</p>
+</dd>
+<dt>Expected return</dt>
+<dd>Iterator of (key, value) or None</dd>
+</dl>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
