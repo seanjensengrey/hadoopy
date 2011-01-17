@@ -6,6 +6,8 @@
 Welcome to Hadoopy's documentation!
 ===================================
 
+API
+--
 ..  toctree::
     :maxdepth: 2
 
