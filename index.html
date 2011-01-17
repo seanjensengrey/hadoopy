@@ -40,13 +40,7 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <dl class="docutils">
-<dt>1;2703;0c..  Hadoopy documentation master file, created by</dt>
-<dd>sphinx-quickstart on Sat Jan 15 20:41:41 2011.
-You can adapt this file completely to your liking, but it should at least
-contain the root <cite>toctree</cite> directive.</dd>
-</dl>
-<div class="section" id="welcome-to-hadoopy-s-documentation">
+  <div class="section" id="welcome-to-hadoopy-s-documentation">
 <h1>Welcome to Hadoopy&#8217;s documentation!<a class="headerlink" href="#welcome-to-hadoopy-s-documentation" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul class="simple">
@@ -73,22 +67,18 @@ contain the root <cite>toctree</cite> directive.</dd>
 <p><strong>Specification of mapper/reducer/combiner</strong></p>
 <dl class="docutils">
 <dt>Input Key/Value Types</dt>
-<dd><p class="first">For TypedBytes, the type will be the decoded typed</p>
-<p class="last">For Text, the type will be text assuming key0\tvalue0\nkey1\tvalue1\n</p>
-</dd>
+<dd><a href="#id1"><span class="problematic" id="id2">|</span></a>For TypedBytes, the type will be the decoded typed
+<a href="#id3"><span class="problematic" id="id4">|</span></a>For Text, the type will be text assuming key0\tvalue0\nkey1\tvalue1\n</dd>
 <dt>Output Key/Value Types</dt>
-<dd><p class="first">For TypedBytes, anything Pickle-able can be used</p>
-<p class="last">For Text, types are converted to string.  Note that neither may contain \t or \n as these are used in the encoding.  Output is key\tvalue\n</p>
-</dd>
+<dd><a href="#id5"><span class="problematic" id="id6">|</span></a>For TypedBytes, anything Pickle-able can be used
+<a href="#id7"><span class="problematic" id="id8">|</span></a>For Text, types are converted to string.  Note that neither may contain \t or \n as these are used in the encoding.  Output is key\tvalue\n</dd>
 <dt>Expected arguments</dt>
-<dd><p class="first">mapper(key, value) or mapper.map(key, value)</p>
-<p>reducer(key, values) or reducer.reduce(key, values)</p>
-<p class="last">combiner(key, values) or combiner.combine(key, values)</p>
-</dd>
+<dd><a href="#id9"><span class="problematic" id="id10">|</span></a>mapper(key, value) or mapper.map(key, value)
+<a href="#id11"><span class="problematic" id="id12">|</span></a>reducer(key, values) or reducer.reduce(key, values)
+<a href="#id13"><span class="problematic" id="id14">|</span></a>combiner(key, values) or combiner.combine(key, values)</dd>
 <dt>Optional methods</dt>
-<dd><p class="first">func.configure(): Call first.  Returns None.</p>
-<p class="last">func.close():  Call last.  Returns Iterator of (key, value) or None</p>
-</dd>
+<dd><a href="#id15"><span class="problematic" id="id16">|</span></a>func.configure(): Call first.  Returns None.
+<a href="#id17"><span class="problematic" id="id18">|</span></a>func.close():  Call last.  Returns Iterator of (key, value) or None</dd>
 <dt>Expected return</dt>
 <dd>Iterator of (key, value) or None</dd>
 </dl>
