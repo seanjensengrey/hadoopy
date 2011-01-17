@@ -50,8 +50,7 @@
 <dt id="hadoopy.run">
 <tt class="descclassname">hadoopy.</tt><tt class="descname">run</tt><big>(</big><em>mapper=None</em>, <em>reducer=None</em>, <em>combiner=None</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#hadoopy.run" title="Permalink to this definition">¶</a></dt>
 <dd><p>This is to be called in all Hadoopy job&#8217;s.  Handles arguments passed in, calls the provided functions with input, and stores the output.</p>
-<p>TypedBytes are used if the following is True
-os.environ[&#8216;stream_map_input&#8217;] == &#8216;typedbytes&#8217;</p>
+<p>TypedBytes are used if os.environ[&#8216;stream_map_input&#8217;] == &#8216;typedbytes&#8217;</p>
 <p>It is <em>highly</em> recommended that TypedBytes be used for all non-trivial tasks.  Keep in mind that the semantics of what you can safely emit from your functions is limited when using Text (i.e., no \t or \n).  You can use the base64 module to ensure that your output is clean.</p>
 <p><strong>Command Interface</strong></p>
 <p>The command line switches added to your script (e.g., script.py) are</p>
