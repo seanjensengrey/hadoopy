@@ -257,20 +257,18 @@ API
     | Output Key/Value Types
     |     For TypedBytes, anything Pickle-able can be used
     |     For Text, types are converted to string.  Note that neither may contain \\t or \\n as these are used in the encoding.  Output is key\\tvalue\\n
-    
-    Expected arguments
-
-        | mapper(key, value) or mapper.map(key, value)
-        | reducer(key, values) or reducer.reduce(key, values)
-        | combiner(key, values) or combiner.combine(key, values)
-
-    Optional methods
-
-        | func.configure(): Call first.  Returns None.
-        | func.close():  Call last.  Returns Iterator of (key, value) or None
-
-    Expected return
-        Iterator of (key, value) or None
+    |
+    | Expected arguments
+    |     mapper(key, value) or mapper.map(key, value)
+    |     reducer(key, values) or reducer.reduce(key, values)
+    |     combiner(key, values) or combiner.combine(key, values)
+    |
+    | Optional methods
+    |     func.configure(): Call first.  Returns None.
+    |     func.close():  Call last.  Returns Iterator of (key, value) or None
+    |
+    | Expected return
+    |     Iterator of (key, value) or None
 
     :param mapper: Function or class instance following the above spec
     :param reducer: Function or class instance following the above spec
