@@ -166,8 +166,8 @@ Found 3 items
 <p>Now it&#8217;s gone</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">hadoopy</span>
 <span class="gt">Traceback (most recent call last):</span>
-  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
-<span class="gr">ImportError</span>: <span class="n">No module named hadoopy</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n-Identifier">&lt;module&gt;</span>
+<span class="nc">ImportError</span>: <span class="n-Identifier">No module named hadoopy</span>
 </pre></div>
 </div>
 <p>The rest of the nodes were cleaned up the same way.  We modify the command, note that we now get the output from cx_Freeze at the top</p>
@@ -368,43 +368,45 @@ occurred, current progress, or coarse statistics.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="hadoopy.launch">
-<tt class="descclassname">hadoopy.</tt><tt class="descname">launch</tt><big>(</big><em>in_name</em>, <em>out_name</em>, <em>script_path</em>, <em>mapper=True</em>, <em>reducer=True</em>, <em>combiner=False</em>, <em>partitioner=False</em>, <em>files=()</em>, <em>jobconfs=()</em>, <em>cmdenvs=()</em>, <em>copy_script=True</em>, <em>hstreaming=None</em>, <em>name=None</em>, <em>use_typedbytes=True</em>, <em>use_seqoutput=True</em>, <em>use_autoinput=True</em>, <em>pretend=False</em>, <em>add_python=True</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#hadoopy.launch" title="Permalink to this definition">¶</a></dt>
+<dt>
+<tt class="descname">hadoopy.launch(in_name, out_name, script_path[, mapper=True, reducer=True, combiner=False, partitioner=False, files=(), jobconfs=(), cmdenvs=(), copy_script=True, hstreaming=None, name=None, use_typedbytes=True, use_seqoutput=True, use_autoinput=True, pretend=False, add_python=True, **kw]):</tt></dt>
 <dd><p>Run Hadoop given the parameters</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd><p class="first">in_name: Input path (string or list)
-out_name: Output path
-script_path: Path to the script (e.g., script.py)
-mapper: If True, the mapper is &#8220;script.py map&#8221;.</p>
-<blockquote>
-<div>If string, the mapper is the value</div></blockquote>
-<dl class="docutils">
-<dt>reducer: If True (default), the reducer is &#8220;script.py reduce&#8221;.</dt>
-<dd>If string, the reducer is the value</dd>
-<dt>combiner: If True, the reducer is &#8220;script.py combine&#8221; (default False).</dt>
-<dd>If string, the combiner is the value</dd>
-</dl>
-<p>partitioner: If True, the partitioner is the value.
-copy_script: If True, the script is added to the files list.
-files: Extra files (other than the script) (string or list).</p>
-<blockquote>
-<div>NOTE: Hadoop copies the files into working directory (path errors!).</div></blockquote>
-<p class="last">jobconfs: Extra jobconf parameters (string or list)
-cmdenvs: Extra cmdenv parameters (string or list)
-hstreaming: The full hadoop streaming path to call.
-use_typedbytes: If True (default), use typedbytes IO.
-use_seqoutput: True (default), output sequence file. If False, output is text.
-use_autoinput: If True (default), sets the input format to auto.
-pretend: If true, only build the command and return.
-add_python: If true, use &#8216;python script_name.py&#8217;</p>
-</dd>
-<dt>Returns:</dt>
-<dd>The hadoop command called.</dd>
-<dt>Raises:</dt>
-<dd>subprocess.CalledProcessError: Hadoop error.
-OSError: Hadoop streaming not found.</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>in_name</strong> &#8211; Input path (string or list)</li>
+<li><strong>out_name</strong> &#8211; Output path</li>
+<li><strong>script_path</strong> &#8211; Path to the script (e.g., script.py)</li>
+<li><strong>mapper</strong> &#8211; If True, the mapper is &#8220;script.py map&#8221;.  If string, the mapper is the value</li>
+<li><strong>reducer</strong> &#8211; If True (default), the reducer is &#8220;script.py reduce&#8221;.  If string, the reducer is the value</li>
+<li><strong>combiner</strong> &#8211; If True, the reducer is &#8220;script.py combine&#8221; (default False).  If string, the combiner is the value</li>
+<li><strong>partitioner</strong> &#8211; If True, the partitioner is the value.</li>
+<li><strong>copy_script</strong> &#8211; If True, the script is added to the files list.</li>
+<li><strong>files</strong> &#8211; Extra files (other than the script) (string or list).  NOTE: Hadoop copies the files into working directory</li>
+<li><strong>jobconfs</strong> &#8211; Extra jobconf parameters (string or list)</li>
+<li><strong>cmdenvs</strong> &#8211; Extra cmdenv parameters (string or list)</li>
+<li><strong>hstreaming</strong> &#8211; The full hadoop streaming path to call.</li>
+<li><strong>use_typedbytes</strong> &#8211; If True (default), use typedbytes IO.</li>
+<li><strong>use_seqoutput</strong> &#8211; True (default), output sequence file. If False, output is text.</li>
+<li><strong>use_autoinput</strong> &#8211; If True (default), sets the input format to auto.</li>
+<li><strong>pretend</strong> &#8211; If true, only build the command and return.</li>
+<li><strong>add_python</strong> &#8211; If true, use &#8216;python script_name.py&#8217;</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">The hadoop command called.</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><p class="first">subprocess.CalledProcessError: Hadoop error.</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last">OSError: Hadoop streaming not found.</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">

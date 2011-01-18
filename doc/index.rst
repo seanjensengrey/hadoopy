@@ -299,7 +299,32 @@ API
     :param amount: Value to add (default 1)
     :param err: Func that outputs a string, if None then sys.stderr.write is used (default None)
 
-..  autofunction:: hadoopy.launch
+..  function:: hadoopy.launch(in_name, out_name, script_path[, mapper=True, reducer=True, combiner=False, partitioner=False, files=(), jobconfs=(), cmdenvs=(), copy_script=True, hstreaming=None, name=None, use_typedbytes=True, use_seqoutput=True, use_autoinput=True, pretend=False, add_python=True, **kw]):
+    
+    Run Hadoop given the parameters
+
+    :param in_name: Input path (string or list)
+    :param out_name: Output path
+    :param script_path: Path to the script (e.g., script.py)
+    :param mapper: If True, the mapper is "script.py map".  If string, the mapper is the value
+    :param reducer: If True (default), the reducer is "script.py reduce".  If string, the reducer is the value
+    :param combiner: If True, the reducer is "script.py combine" (default False).  If string, the combiner is the value
+    :param partitioner: If True, the partitioner is the value.
+    :param copy_script: If True, the script is added to the files list.
+    :param files: Extra files (other than the script) (string or list).  NOTE: Hadoop copies the files into working directory
+    :param jobconfs: Extra jobconf parameters (string or list)
+    :param cmdenvs: Extra cmdenv parameters (string or list)
+    :param hstreaming: The full hadoop streaming path to call.
+    :param use_typedbytes: If True (default), use typedbytes IO.
+    :param use_seqoutput: True (default), output sequence file. If False, output is text.
+    :param use_autoinput: If True (default), sets the input format to auto.
+    :param pretend: If true, only build the command and return.
+    :param add_python: If true, use 'python script_name.py'
+    :rtype: The hadoop command called.
+    :raises: subprocess.CalledProcessError: Hadoop error.
+    :raises: OSError: Hadoop streaming not found.
+
+
 ..  autofunction:: hadoopy.launch_frozen
 
 ..  function:: hadoopy.ls(path)
