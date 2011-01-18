@@ -277,12 +277,50 @@ API
     :rtype: True on error, else False (may not return if doc is set and
         there is an error)
 
-..  autofunction:: hadoopy.status
-..  autofunction:: hadoopy.counter
+..  function:: hadoopy.status(msg[, err=None])
+
+    Output a status message that is displayed in the Hadoop web interface
+
+    The status message will replace any other, if you want to append you must
+    do this yourself.
+
+    :param msg: String representing the status message
+    :param err: Func that outputs a string, if None then sys.stderr.write is used (default None)
+
+..  function:: hadoopy.counter(group, counter[, amount=1, err=None])
+
+    Output a counter update that is displayed in the Hadoop web interface
+
+    Counters are useful for quickly identifying the number of times an error
+    occurred, current progress, or coarse statistics.
+
+    :param group: Counter group
+    :param counter: Counter name
+    :param amount: Value to add (default 1)
+    :param err: Func that outputs a string, if None then sys.stderr.write is used (default None)
+
 ..  autofunction:: hadoopy.launch
 ..  autofunction:: hadoopy.launch_frozen
-..  autofunction:: hadoopy.cat
-..  autofunction:: hadoopy.ls
+
+..  function:: hadoopy.ls(path)
+
+    List files on HDFS.
+
+    :param path: A string (potentially with wildcards).
+    :rtype: A list of strings representing HDFS paths.
+    :raises: IOError: An error occurred listing the directory (e.g., not available).
+
+
+..  autofunction:: hadoopy.cat(path[, procs=10])
+
+    Read typedbytes sequence files on HDFS (with optional compression).
+
+    :pram path: A string (potentially with wildcards).
+    :param procs: Number of processes to use.
+    :rtype: An iterator of key, value pairs.
+    :raises: IOError: An error occurred listing the directory (e.g., not available).
+
+
 ..  autoclass:: hadoopy.GroupedValues
     :members:
 ..  autoclass:: hadoopy.Test

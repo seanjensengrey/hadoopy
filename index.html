@@ -327,30 +327,44 @@ there is an error)</p>
 
 <dl class="function">
 <dt id="hadoopy.status">
-<tt class="descclassname">hadoopy.</tt><tt class="descname">status</tt><big>(</big><em>msg</em>, <em>err=None</em><big>)</big><a class="headerlink" href="#hadoopy.status" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">hadoopy.</tt><tt class="descname">status</tt><big>(</big><em>msg</em><span class="optional">[</span>, <em>err=None</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#hadoopy.status" title="Permalink to this definition">¶</a></dt>
 <dd><p>Output a status message that is displayed in the Hadoop web interface</p>
 <p>The status message will replace any other, if you want to append you must
 do this yourself.</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd>msg: String representing the status message
-err: Func that outputs a string if None stderr is used (default None)</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>msg</strong> &#8211; String representing the status message</li>
+<li><strong>err</strong> &#8211; Func that outputs a string, if None then sys.stderr.write is used (default None)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
 <dt id="hadoopy.counter">
-<tt class="descclassname">hadoopy.</tt><tt class="descname">counter</tt><big>(</big><em>group</em>, <em>counter</em>, <em>amount=1</em>, <em>err=None</em><big>)</big><a class="headerlink" href="#hadoopy.counter" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">hadoopy.</tt><tt class="descname">counter</tt><big>(</big><em>group</em>, <em>counter</em><span class="optional">[</span>, <em>amount=1</em>, <em>err=None</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#hadoopy.counter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Output a counter update that is displayed in the Hadoop web interface</p>
 <p>Counters are useful for quickly identifying the number of times an error
 occurred, current progress, or coarse statistics.</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd>group: Counter group
-counter: Counter name
-amount: Value to add (default 1)
-err: Func that outputs a string if None stderr is used (default None)</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>group</strong> &#8211; Counter group</li>
+<li><strong>counter</strong> &#8211; Counter name</li>
+<li><strong>amount</strong> &#8211; Value to add (default 1)</li>
+<li><strong>err</strong> &#8211; Func that outputs a string, if None then sys.stderr.write is used (default None)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
@@ -412,8 +426,26 @@ OSError: Hadoop streaming or Cxfreeze not found.</dd>
 </dd></dl>
 
 <dl class="function">
+<dt id="hadoopy.ls">
+<tt class="descclassname">hadoopy.</tt><tt class="descname">ls</tt><big>(</big><em>path</em><big>)</big><a class="headerlink" href="#hadoopy.ls" title="Permalink to this definition">¶</a></dt>
+<dd><p>List files on HDFS.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> &#8211; A string (potentially with wildcards).</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body">A list of strings representing HDFS paths.</td>
+</tr>
+<tr class="field"><th class="field-name">Raises :</th><td class="field-body">IOError: An error occurred listing the directory (e.g., not available).</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
 <dt id="hadoopy.cat">
-<tt class="descclassname">hadoopy.</tt><tt class="descname">cat</tt><big>(</big><em>path</em>, <em>procs=10</em><big>)</big><a class="headerlink" href="#hadoopy.cat" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">hadoopy.</tt><tt class="descname">cat</tt><big>(</big><em>path</em><span class="optional">[</span>, <em>procs=10</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#hadoopy.cat" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read typedbytes sequence files on HDFS (with optional compression).</p>
 <dl class="docutils">
 <dt>Args:</dt>
@@ -424,20 +456,21 @@ procs: Number of processes to use.</dd>
 <dt>Raises:</dt>
 <dd>IOError: An error occurred listing the directory (e.g., not available).</dd>
 </dl>
-</dd></dl>
-
-<dl class="function">
-<dt id="hadoopy.ls">
-<tt class="descclassname">hadoopy.</tt><tt class="descname">ls</tt><big>(</big><em>path</em><big>)</big><a class="headerlink" href="#hadoopy.ls" title="Permalink to this definition">¶</a></dt>
-<dd><p>List files on HDFS.</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd>path: A string (potentially with wildcards).</dd>
-<dt>Returns:</dt>
-<dd>A list of strings representing HDFS paths.</dd>
-<dt>Raises:</dt>
-<dd>IOError: An error occurred listing the directory (e.g., not available).</dd>
-</dl>
+<p>Read typedbytes sequence files on HDFS (with optional compression).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Pram path:</th><td class="field-body">A string (potentially with wildcards).</td>
+</tr>
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><strong>procs</strong> &#8211; Number of processes to use.</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body">An iterator of key, value pairs.</td>
+</tr>
+<tr class="field"><th class="field-name">Raises :</th><td class="field-body">IOError: An error occurred listing the directory (e.g., not available).</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="class">
