@@ -296,13 +296,13 @@ $ hexdump -C wc | head -n5
 </div>
 <div class="line">Optional methods</div>
 <div class="line-block">
-<div class="line">func.configure(): Call first.  Returns None.</div>
-<div class="line">func.close():  Call last.  Returns Iterator of (key, value) or None</div>
+<div class="line">func.configure(): Called before any input read.  Returns None.</div>
+<div class="line">func.close():  Called after all input read.  Returns None or Iterator of (key, value)</div>
 <div class="line"><br /></div>
 </div>
 <div class="line">Expected return</div>
 <div class="line-block">
-<div class="line">Iterator of (key, value) or None</div>
+<div class="line">None or Iterator of (key, value)</div>
 </div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">

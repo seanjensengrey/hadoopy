@@ -263,11 +263,11 @@ API
     |     combiner(key, values) or combiner.combine(key, values)
     |
     | Optional methods
-    |     func.configure(): Call first.  Returns None.
-    |     func.close():  Call last.  Returns Iterator of (key, value) or None
+    |     func.configure(): Called before any input read.  Returns None.
+    |     func.close():  Called after all input read.  Returns None or Iterator of (key, value)
     |
     | Expected return
-    |     Iterator of (key, value) or None
+    |     None or Iterator of (key, value)
 
     :param mapper: Function or class instance following the above spec
     :param reducer: Function or class instance following the above spec
