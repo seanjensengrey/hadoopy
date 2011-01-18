@@ -381,7 +381,7 @@ occurred, current progress, or coarse statistics.</p>
 <li><strong>script_path</strong> &#8211; Path to the script (e.g., script.py)</li>
 <li><strong>mapper</strong> &#8211; If True, the mapper is &#8220;script.py map&#8221;.  If string, the mapper is the value</li>
 <li><strong>reducer</strong> &#8211; If True (default), the reducer is &#8220;script.py reduce&#8221;.  If string, the reducer is the value</li>
-<li><strong>combiner</strong> &#8211; If True, the reducer is &#8220;script.py combine&#8221; (default False).  If string, the combiner is the value</li>
+<li><strong>combiner</strong> &#8211; If True, the combiner is &#8220;script.py combine&#8221; (default False).  If string, the combiner is the value</li>
 <li><strong>partitioner</strong> &#8211; If True, the partitioner is the value.</li>
 <li><strong>copy_script</strong> &#8211; If True, the script is added to the files list.</li>
 <li><strong>files</strong> &#8211; Extra files (other than the script) (string or list).  NOTE: Hadoop copies the files into working directory</li>
@@ -411,20 +411,53 @@ occurred, current progress, or coarse statistics.</p>
 
 <dl class="function">
 <dt id="hadoopy.launch_frozen">
-<tt class="descclassname">hadoopy.</tt><tt class="descname">launch_frozen</tt><big>(</big><em>in_name</em>, <em>out_name</em>, <em>script_path</em>, <em>**kw</em><big>)</big><a class="headerlink" href="#hadoopy.launch_frozen" title="Permalink to this definition">¶</a></dt>
-<dd><p>Freezes a script and then launches it.</p>
-<p>Consult hadoopy._freeze.freeze and hadoopy.launch for optional kw args.</p>
-<dl class="docutils">
-<dt>Args:</dt>
-<dd>in_name: Input path (string or list)
-out_name: Output path
-script_path: Path to the script (e.g., script.py)</dd>
-<dt>Returns:</dt>
-<dd>A tuple of the freeze and hadoop commands.</dd>
-<dt>Raises:</dt>
-<dd>subprocess.CalledProcessError: Hadoop or Cxfreeze error.
-OSError: Hadoop streaming or Cxfreeze not found.</dd>
-</dl>
+<tt class="descclassname">hadoopy.</tt><tt class="descname">launch_frozen</tt><big>(</big><em>in_name</em>, <em>out_name</em>, <em>script_path</em><span class="optional">[</span>, <em>**kw</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#hadoopy.launch_frozen" title="Permalink to this definition">¶</a></dt>
+<dt>
+<tt class="descname">Freezes a script and then launches it.</tt></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>in_name</strong> &#8211; Input path (string or list)</li>
+<li><strong>out_name</strong> &#8211; Output path</li>
+<li><strong>script_path</strong> &#8211; Path to the script (e.g., script.py)</li>
+<li><strong>mapper</strong> &#8211; If True, the mapper is &#8220;script.py map&#8221;.  If string, the mapper is the value</li>
+<li><strong>reducer</strong> &#8211; If True (default), the reducer is &#8220;script.py reduce&#8221;.  If string, the reducer is the value</li>
+<li><strong>combiner</strong> &#8211; If True, the combiner is &#8220;script.py combine&#8221; (default False).  If string, the combiner is the value</li>
+<li><strong>partitioner</strong> &#8211; If True, the partitioner is the value.</li>
+<li><strong>copy_script</strong> &#8211; If True, the script is added to the files list.</li>
+<li><strong>files</strong> &#8211; Extra files (other than the script) (string or list).  NOTE: Hadoop copies the files into working directory</li>
+<li><strong>jobconfs</strong> &#8211; Extra jobconf parameters (string or list)</li>
+<li><strong>cmdenvs</strong> &#8211; Extra cmdenv parameters (string or list)</li>
+<li><strong>hstreaming</strong> &#8211; The full hadoop streaming path to call.</li>
+<li><strong>use_typedbytes</strong> &#8211; If True (default), use typedbytes IO.</li>
+<li><strong>use_seqoutput</strong> &#8211; True (default), output sequence file. If False, output is text.</li>
+<li><strong>use_autoinput</strong> &#8211; If True (default), sets the input format to auto.</li>
+<li><strong>pretend</strong> &#8211; If true, only build the command and return.</li>
+<li><strong>add_python</strong> &#8211; If true, use &#8216;python script_name.py&#8217;</li>
+<li><strong>shared_libs</strong> &#8211; A sequence of additional shared library paths for cxfreeze to include.</li>
+<li><strong>modules</strong> &#8211; Additional modules to include.</li>
+<li><strong>remove_dir</strong> &#8211; Will rm -r the target_dir when true (be careful)! (default is False)</li>
+<li><strong>target_dir</strong> &#8211; Output directory where cxfreeze and this function output.</li>
+<li><strong>exclude_modules</strong> &#8211; A sequence of modules for cxfreeze to ignore (default is (tcl, tk, Tkinter))</li>
+<li><strong>freeze_cmd</strong> &#8211; Path to cxfreeze (default is cxfreeze)</li>
+<li><strong>verbose</strong> &#8211; If true, output to stdout all command results.</li>
+<li><strong>extra</strong> &#8211; A string to be appended to the cxfreeze command</li>
+</ul>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">A tuple of the freeze and hadoop commands.</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><p class="first">subprocess.CalledProcessError: Hadoop or cxfreeze error.</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last">OSError: Hadoop streaming or cxfreeze not found.</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">

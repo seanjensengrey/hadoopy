@@ -308,7 +308,7 @@ API
     :param script_path: Path to the script (e.g., script.py)
     :param mapper: If True, the mapper is "script.py map".  If string, the mapper is the value
     :param reducer: If True (default), the reducer is "script.py reduce".  If string, the reducer is the value
-    :param combiner: If True, the reducer is "script.py combine" (default False).  If string, the combiner is the value
+    :param combiner: If True, the combiner is "script.py combine" (default False).  If string, the combiner is the value
     :param partitioner: If True, the partitioner is the value.
     :param copy_script: If True, the script is added to the files list.
     :param files: Extra files (other than the script) (string or list).  NOTE: Hadoop copies the files into working directory
@@ -325,7 +325,37 @@ API
     :raises: OSError: Hadoop streaming not found.
 
 
-..  autofunction:: hadoopy.launch_frozen
+..  function:: hadoopy.launch_frozen(in_name, out_name, script_path[, **kw])
+    Freezes a script and then launches it.
+
+    :param in_name: Input path (string or list)
+    :param out_name: Output path
+    :param script_path: Path to the script (e.g., script.py)
+    :param mapper: If True, the mapper is "script.py map".  If string, the mapper is the value
+    :param reducer: If True (default), the reducer is "script.py reduce".  If string, the reducer is the value
+    :param combiner: If True, the combiner is "script.py combine" (default False).  If string, the combiner is the value
+    :param partitioner: If True, the partitioner is the value.
+    :param copy_script: If True, the script is added to the files list.
+    :param files: Extra files (other than the script) (string or list).  NOTE: Hadoop copies the files into working directory
+    :param jobconfs: Extra jobconf parameters (string or list)
+    :param cmdenvs: Extra cmdenv parameters (string or list)
+    :param hstreaming: The full hadoop streaming path to call.
+    :param use_typedbytes: If True (default), use typedbytes IO.
+    :param use_seqoutput: True (default), output sequence file. If False, output is text.
+    :param use_autoinput: If True (default), sets the input format to auto.
+    :param pretend: If true, only build the command and return.
+    :param add_python: If true, use 'python script_name.py'
+    :param shared_libs: A sequence of additional shared library paths for cxfreeze to include.
+    :param modules: Additional modules to include.
+    :param remove_dir: Will rm -r the target_dir when true (be careful)! (default is False)
+    :param target_dir: Output directory where cxfreeze and this function output.
+    :param exclude_modules: A sequence of modules for cxfreeze to ignore (default is (tcl, tk, Tkinter))
+    :param freeze_cmd: Path to cxfreeze (default is cxfreeze)
+    :param verbose: If true, output to stdout all command results.
+    :param extra: A string to be appended to the cxfreeze command
+    :rtype: A tuple of the freeze and hadoop commands.
+    :raises: subprocess.CalledProcessError: Hadoop or cxfreeze error.
+    :raises: OSError: Hadoop streaming or cxfreeze not found.
 
 ..  function:: hadoopy.ls(path)
 
