@@ -66,11 +66,17 @@ Here are a few test files ::
     -rw-r--r--   2 brandyn supergroup      60638 2011-01-17 18:56 /user/brandyn/playground/wc-input-alice.txt.gz
 
 We can also get these in Python
+
     >>> import hadoopy
     >>> hadoopy.ls('playground/')
     ['/user/brandyn/playground/wc-input-alice.tb', '/user/brandyn/playground/wc-input-alice.txt', '/user/brandyn/playground/wc-input-alice.txt.gz']
 
-Lets run the previous 
+Lets put wc-input-alice.txt through the word counter using Hadoop
+
+    
+
+     
+
 
 API
 ---

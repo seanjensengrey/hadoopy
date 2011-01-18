@@ -57,6 +57,27 @@ Command line test (map/sort/reduce) ::
     b    2
     c    1
 
+Here are a few test files ::
+
+    $ hadoop fs -ls playground/
+    Found 3 items
+    -rw-r--r--   2 brandyn supergroup     259835 2011-01-17 18:56 /user/brandyn/playground/wc-input-alice.tb
+    -rw-r--r--   2 brandyn supergroup     167529 2011-01-17 18:56 /user/brandyn/playground/wc-input-alice.txt
+    -rw-r--r--   2 brandyn supergroup      60638 2011-01-17 18:56 /user/brandyn/playground/wc-input-alice.txt.gz
+
+We can also get these in Python
+
+    >>> import hadoopy
+    >>> hadoopy.ls('playground/')
+    ['/user/brandyn/playground/wc-input-alice.tb', '/user/brandyn/playground/wc-input-alice.txt', '/user/brandyn/playground/wc-input-alice.txt.gz']
+
+Lets put wc-input-alice.txt through the word counter using Hadoop
+
+    
+
+     
+
+
 API
 ---
 
