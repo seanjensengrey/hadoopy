@@ -13,8 +13,24 @@ Welcome to Hadoopy's documentation!
 
 Visit https://github.com/bwhite/hadoopy/ for the source.
 
+About
+---------------------------
+Hadoopy is a Python wrapper for Hadoop Streaming written in Cython.  It is simple, fast, and readily hackable.  It has been tested on 700+ node clusters.  The goals of Hadoopy are
+* Similar interface as the Hadoop API (design patterns usable between Python/Java interfaces)
+* General compatibility with dumbo to allow users to switch back and forth
+* Usable on Hadoop clusters without Python or admin access
+* Fast conversion and processing
+* Stay small and well documented
+* Be transparent with what is going on
+* Handle programs with complicated .so's, ctypes, and extensions
+* Code written for hack-ability
+* Simple HDFS access (e.g., ls and cat)
+* Oozie support from the start
+* Protocol Buffers support (in progress)
+* Cython user code support (in progress)
+
 Example - Hello Wordcount!
--------
+---------------------------
 Python Source (fully documented version in tests/wc.py) ::
 
     """Hadoopy Wordcount Demo"""
