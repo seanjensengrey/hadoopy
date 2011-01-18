@@ -277,8 +277,8 @@ $ hexdump -C wc | head -n5
 <div class="line"><strong>Specification of mapper/reducer/combiner</strong></div>
 <div class="line">Input Key/Value Types</div>
 <div class="line-block">
-<div class="line">For TypedBytes, the type will be the decoded typed</div>
-<div class="line">For Text, the type will be text assuming key0\tvalue0\nkey1\tvalue1\n</div>
+<div class="line">For TypedBytes/SequenceFileInputFormat, the Key/Value are the decoded TypedBytes</div>
+<div class="line">For TextInputFormat, the Key is a byte offset (int) and the Value is a line without the newline (string)</div>
 <div class="line"><br /></div>
 </div>
 <div class="line">Output Key/Value Types</div>

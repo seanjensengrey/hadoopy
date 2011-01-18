@@ -250,8 +250,8 @@ API
     
     | **Specification of mapper/reducer/combiner** 
     | Input Key/Value Types
-    |     For TypedBytes, the type will be the decoded typed
-    |     For Text, the type will be text assuming key0\\tvalue0\\nkey1\\tvalue1\\n
+    |     For TypedBytes/SequenceFileInputFormat, the Key/Value are the decoded TypedBytes
+    |     For TextInputFormat, the Key is a byte offset (int) and the Value is a line without the newline (string)
     |
     | Output Key/Value Types
     |     For TypedBytes, anything Pickle-able can be used
