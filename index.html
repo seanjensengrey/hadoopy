@@ -140,7 +140,7 @@ Found 3 items
 <span class="go">[(&#39;was&#39;, 329), (&#39;it&#39;, 356), (&#39;in&#39;, 401), (&#39;said&#39;, 416), (&#39;she&#39;, 484), (&#39;of&#39;, 596), (&#39;a&#39;, 662), (&#39;to&#39;, 773), (&#39;and&#39;, 780), (&#39;the&#39;, 1664)]</span>
 </pre></div>
 </div>
-<p>Note that the output is stored in SequenceFiles and each key/value is stored encoded as TypedBytes, by using cat you don&#8217;t have to worry about any of that (if the output was compressed it would also be decompressed here).  This can also be done inside of a job for getting additional side-data.</p>
+<p>Note that the output is stored in SequenceFiles and each key/value is stored encoded as TypedBytes, by using cat you don&#8217;t have to worry about any of that (if the output was compressed it would also be decompressed here).  This can also be done inside of a job for getting additional side-data off of HDFS.</p>
 <p>What if we don&#8217;t want to install python, numpy, scipy, or your-custom-code-that-always-changes on every node in the cluster?  We have you covered there too.  I&#8217;ll remove hadoopy from all nodes except for the one executing the job.</p>
 <div class="highlight-python"><pre>$ sudo rm -r /usr/local/lib/python2.6/dist-packages/hadoopy*</pre>
 </div>
