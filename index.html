@@ -495,13 +495,17 @@ procs: Number of processes to use.</dd>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field"><th class="field-name">Pram path:</th><td class="field-body">A string (potentially with wildcards).</td>
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>path</strong> &#8211; A string (potentially with wildcards).</li>
+<li><strong>procs</strong> &#8211; Number of processes to use.</li>
+</ul>
+</td>
 </tr>
-<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><strong>procs</strong> &#8211; Number of processes to use.</td>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">An iterator of key, value pairs.</p>
+</td>
 </tr>
-<tr class="field"><th class="field-name">Return type:</th><td class="field-body">An iterator of key, value pairs.</td>
-</tr>
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body">IOError: An error occurred listing the directory (e.g., not available).</td>
+<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last">IOError: An error occurred listing the directory (e.g., not available).</p>
+</td>
 </tr>
 </tbody>
 </table>

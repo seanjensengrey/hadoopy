@@ -370,7 +370,7 @@ API
 
     Read typedbytes sequence files on HDFS (with optional compression).
 
-    :pram path: A string (potentially with wildcards).
+    :param path: A string (potentially with wildcards).
     :param procs: Number of processes to use.
     :rtype: An iterator of key, value pairs.
     :raises: IOError: An error occurred listing the directory (e.g., not available).
