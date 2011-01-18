@@ -83,7 +83,7 @@ The majority of the time spent by Hadoopy (and Dumbo) is in the TypedBytes conve
 
 Example - Hello Wordcount!
 ---------------------------
-Python Source (fully documented version in `tests/wc.py`_) ::
+Python Source (fully documented version in wc.py_) ::
 
     """Hadoopy Wordcount Demo"""
     import hadoopy
@@ -101,7 +101,7 @@ Python Source (fully documented version in `tests/wc.py`_) ::
     if __name__ == "__main__":
         hadoopy.run(mapper, reducer, doc=__doc__)
 
-.. _tests/wc.py: https://github.com/bwhite/hadoopy/blob/master/tests/wc.py
+.. _wc.py: https://github.com/bwhite/hadoopy/blob/master/tests/wc.py
 
 Command line test (run without args, it prints the docstring and quits because of doc=__doc__) ::
 
