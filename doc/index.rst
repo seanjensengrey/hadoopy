@@ -12,6 +12,10 @@ Hadoopy: Python wrapper for Hadoop using Cython
 
 Visit https://github.com/bwhite/hadoopy/ for the source.
 
+Relevant blog posts
+
+* http://brandynwhite.com/hadoopy-cython-based-mapreduce-library-for-py
+
 About
 ---------------------------
 Hadoopy is a Python wrapper for Hadoop Streaming written in Cython.  It is simple, fast, and readily hackable.  It has been tested on 700+ node clusters.  The goals of Hadoopy are
