@@ -325,7 +325,8 @@ API
     :raises: OSError: Hadoop streaming not found.
 
 
-..  function:: hadoopy.launch_frozen(in_name, out_name, script_path[, **kw])
+..  function:: hadoopy.launch_frozen(in_name, out_name, script_path[, mapper=True, reducer=True, combiner=False, partitioner=False, files=(), jobconfs=(), cmdenvs=(), copy_script=True, hstreaming=None, name=None, use_typedbytes=True, use_seqoutput=True, use_autoinput=True, pretend=False, add_python=True, shared_libs=(), modules=(), remove_dir=False, target_dir='frozen', exclude_modules=('tcl', 'tk', 'Tkinter'), freeze_cmd='cxfreeze', pretend=False, verbose=False, extra='', **kw])
+
     Freezes a script and then launches it.
 
     :param in_name: Input path (string or list)
