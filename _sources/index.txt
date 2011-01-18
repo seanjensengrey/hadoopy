@@ -73,9 +73,36 @@ We can also get these in Python
 
 Lets put wc-input-alice.txt through the word counter using Hadoop
 
-    
+    >>> cmd = hadoopy.launch('playground/wc-input-alice.txt', 'playground/out/', 'wc.py')
+    HadooPY: Running[hadoop jar /usr/lib/hadoop-0.20/contrib/streaming/hadoop-streaming-0.20.2+737.jar -output playground/out/ -input playground/wc-input-alice.txt -mapper "python wc.py map" -reducer "python wc.py reduce" -file wc.py -jobconf mapred.job.name=python wc.py -io typedbytes -outputformat org.apache.hadoop.mapred.SequenceFileOutputFormat -    inputformat AutoInputFormat]
+    11/01/17 20:22:31 WARN streaming.StreamJob: -jobconf option is deprecated, please use -D instead.
+    packageJobJar: [wc.py, /var/lib/hadoop-0.20/cache/brandyn/hadoop-unjar464849802654976085/] [] /tmp/streamjob1822202887260165136.jar tmpDir=null
+    11/01/17 20:22:32 INFO mapred.FileInputFormat: Total input paths to process : 1
+    11/01/17 20:22:32 INFO streaming.StreamJob: getLocalDirs(): [/var/lib/hadoop-0.20/cache/brandyn/mapred/local]
+    11/01/17 20:22:32 INFO streaming.StreamJob: Running job: job_201101141644_0723
+    11/01/17 20:22:32 INFO streaming.StreamJob: To kill this job, run:
+    11/01/17 20:22:32 INFO streaming.StreamJob: /usr/lib/hadoop-0.20/bin/hadoop job  -Dmapred.job.tracker=vitrieve03.pc.umiacs.umd.edu:8021 -kill job_201101141644_0723
+    11/01/17 20:22:32 INFO streaming.StreamJob: Tracking URL: http://vitrieve03.pc.umiacs.umd.edu:50030/jobdetails.jsp?jobid=job_201101141644_0723
+    11/01/17 20:22:33 INFO streaming.StreamJob:  map 0%  reduce 0%
+    11/01/17 20:22:40 INFO streaming.StreamJob:  map 50%  reduce 0%
+    11/01/17 20:22:41 INFO streaming.StreamJob:  map 100%  reduce 0%
+    11/01/17 20:22:52 INFO streaming.StreamJob:  map 100%  reduce 100%
+    11/01/17 20:22:55 INFO streaming.StreamJob: Job complete: job_201101141644_0723
+    11/01/17 20:22:55 INFO streaming.StreamJob: Output: playground/out/
 
-     
+Output is the command used
+
+    >>> print(cmd)
+    hadoop jar /usr/lib/hadoop-0.20/contrib/streaming/hadoop-streaming-0.20.2+737.jar -output playground/out/ -input playground/wc-input-alice.txt -mapper "python wc.py map" -reducer "python wc.py reduce" -file wc.py -jobconf mapred.job.name=python wc.py -io typedbytes -outputformat org.apache.hadoop.mapred.SequenceFileOutputFormat -inputformat AutoInputFormat
+
+Lets see what the output looks like
+
+    >>> out = list(hadoopy.cat('playground/out'))
+    >>> out[:10]
+    [('*', 60), ('-', 7), ('3', 2), ('4', 1), ('A', 8), ('I', 260), ('O', 1), ('a', 662), ('"I', 7), ("'A", 9)]
+    >>> out.sort(lambda x, y: cmp(x[1], y[1]))
+    >>> out[-10:]
+    [('was', 329), ('it', 356), ('in', 401), ('said', 416), ('she', 484), ('of', 596), ('a', 662), ('to', 773), ('and', 780), ('the', 1664)]
 
 
 API
