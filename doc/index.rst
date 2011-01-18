@@ -11,6 +11,8 @@ Welcome to Hadoopy's documentation!
 ..  toctree::
     :maxdepth: 2
 
+To get the source go here <https://github.com/bwhite/hadoopy/>`_
+
 Example - Hello Wordcount!
 -------
 Python Source (fully documented version in tests/wc.py) ::
