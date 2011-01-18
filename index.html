@@ -65,6 +65,149 @@
 <li>Cython user code support (in progress)</li>
 </ul>
 </div>
+<div class="section" id="benchmark">
+<h2>Benchmark<a class="headerlink" href="#benchmark" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="15%" />
+<col width="15%" />
+<col width="15%" />
+<col width="15%" />
+<col width="15%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Filename</th>
+<th class="head">Hadoopy</th>
+<th class="head">HadoopyFP</th>
+<th class="head">TB</th>
+<th class="head">cTB</th>
+<th class="head">Ratio</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>bool_100k.tb</td>
+<td>0.171204</td>
+<td>0.143165</td>
+<td>1.069666</td>
+<td>2.088057</td>
+<td>7.471568</td>
+</tr>
+<tr><td>byte_100k.tb</td>
+<td>0.177348</td>
+<td>0.144182</td>
+<td>1.012734</td>
+<td>1.950532</td>
+<td>7.023999</td>
+</tr>
+<tr><td>bytes_100_10k.tb</td>
+<td>0.070541</td>
+<td>0.067244</td>
+<td>0.155550</td>
+<td>0.303947</td>
+<td>2.313216</td>
+</tr>
+<tr><td>bytes_10k_10k.tb</td>
+<td>3.141314</td>
+<td>3.240806</td>
+<td>3.119517</td>
+<td>6.350804</td>
+<td>0.962574</td>
+</tr>
+<tr><td>bytes_1k_10k.tb</td>
+<td>0.407009</td>
+<td>0.416128</td>
+<td>0.361885</td>
+<td>0.731536</td>
+<td>0.869649</td>
+</tr>
+<tr><td>dict_50.tb</td>
+<td>0.388797</td>
+<td>0.376632</td>
+<td>1.696196</td>
+<td>3.244848</td>
+<td>4.503590</td>
+</tr>
+<tr><td>double_100k.tb</td>
+<td>0.142513</td>
+<td>0.111121</td>
+<td>0.938005</td>
+<td>1.839229</td>
+<td>8.441282</td>
+</tr>
+<tr><td>float_100k.tb</td>
+<td>0.141746</td>
+<td>0.109009</td>
+<td>0.967048</td>
+<td>1.879755</td>
+<td>8.871265</td>
+</tr>
+<tr><td>gb_100k.tb</td>
+<td>4.621609</td>
+<td>3.985729</td>
+<td>27.307469</td>
+<td>52.993362</td>
+<td>6.851311</td>
+</tr>
+<tr><td>gb_single.tb</td>
+<td>0.049595</td>
+<td>0.044005</td>
+<td>0.041433</td>
+<td>0.080299</td>
+<td>0.941551</td>
+</tr>
+<tr><td>int_100k.tb</td>
+<td>0.213741</td>
+<td>0.204090</td>
+<td>1.021735</td>
+<td>1.970035</td>
+<td>5.006300</td>
+</tr>
+<tr><td>list_50.tb</td>
+<td>0.356476</td>
+<td>0.353057</td>
+<td>1.537296</td>
+<td>3.001895</td>
+<td>4.354244</td>
+</tr>
+<tr><td>long_100k.tb</td>
+<td>0.736019</td>
+<td>0.658658</td>
+<td>1.991410</td>
+<td>3.776910</td>
+<td>3.023435</td>
+</tr>
+<tr><td>string_100_10k.tb</td>
+<td>0.108391</td>
+<td>0.105317</td>
+<td>0.154561</td>
+<td>0.324685</td>
+<td>1.467579</td>
+</tr>
+<tr><td>string_10k_10k.tb</td>
+<td>6.931155</td>
+<td>6.652465</td>
+<td>6.859705</td>
+<td>13.567755</td>
+<td>1.031152</td>
+</tr>
+<tr><td>string_1k_10k.tb</td>
+<td>0.956392</td>
+<td>0.769068</td>
+<td>0.754628</td>
+<td>1.474792</td>
+<td>0.981224</td>
+</tr>
+<tr><td>tuple_50.tb</td>
+<td>0.367085</td>
+<td>0.413169</td>
+<td>1.564520</td>
+<td>3.231316</td>
+<td>3.786633</td>
+</tr>
+</tbody>
+</table>
+</div>
 <div class="section" id="example-hello-wordcount">
 <h2>Example - Hello Wordcount!<a class="headerlink" href="#example-hello-wordcount" title="Permalink to this headline">¶</a></h2>
 <p>Python Source (fully documented version in tests/wc.py)</p>
@@ -581,6 +724,7 @@ procs: Number of processes to use.</dd>
   <ul>
 <li><a class="reference internal" href="#">Hadoopy: Python wrapper for Hadoop using Cython</a><ul>
 <li><a class="reference internal" href="#about">About</a></li>
+<li><a class="reference internal" href="#benchmark">Benchmark</a></li>
 <li><a class="reference internal" href="#example-hello-wordcount">Example - Hello Wordcount!</a></li>
 <li><a class="reference internal" href="#api">API</a></li>
 </ul>
