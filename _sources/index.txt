@@ -16,6 +16,7 @@ Visit https://github.com/bwhite/hadoopy/ for the source.
 About
 ---------------------------
 Hadoopy is a Python wrapper for Hadoop Streaming written in Cython.  It is simple, fast, and readily hackable.  It has been tested on 700+ node clusters.  The goals of Hadoopy are
+
 * Similar interface as the Hadoop API (design patterns usable between Python/Java interfaces)
 * General compatibility with dumbo to allow users to switch back and forth
 * Usable on Hadoop clusters without Python or admin access
