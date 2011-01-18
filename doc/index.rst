@@ -299,7 +299,7 @@ API
     :param amount: Value to add (default 1)
     :param err: Func that outputs a string, if None then sys.stderr.write is used (default None)
 
-..  function:: hadoopy.launch(in_name, out_name, script_path[, mapper=True, reducer=True, combiner=False, partitioner=False, files=(), jobconfs=(), cmdenvs=(), copy_script=True, hstreaming=None, name=None, use_typedbytes=True, use_seqoutput=True, use_autoinput=True, pretend=False, add_python=True, **kw]):
+..  function:: hadoopy.launch(in_name, out_name, script_path[, mapper=True, reducer=True, combiner=False, partitioner=False, files=(), jobconfs=(), cmdenvs=(), copy_script=True, hstreaming=None, name=None, use_typedbytes=True, use_seqoutput=True, use_autoinput=True, pretend=False, add_python=True, **kw])
     
     Run Hadoop given the parameters
 
