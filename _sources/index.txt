@@ -13,8 +13,9 @@ Welcome to Hadoopy's documentation!
 
 Example - Hello Wordcount!
 -------
-Python Source (wc.py) ::
+Python Source (fully documented version in tests/wc.py) ::
 
+    """Hadoopy Wordcount Demo"""
     import hadoopy
 
     def mapper(key, value):
@@ -28,7 +29,11 @@ Python Source (wc.py) ::
         yield key, accum
 
     if __name__ == "__main__":
-        hadoopy.run(mapper, reducer)
+        hadoopy.run(mapper, reducer, doc=__doc__)
+
+Command line test (run without args prints docstring and quits because of doc=__doc__) ::
+    $ python wc.py
+    Hadoopy Wordcount Demo
 
 Command line test (map) ::
 
@@ -65,13 +70,13 @@ Here are a few test files ::
     -rw-r--r--   2 brandyn supergroup     167529 2011-01-17 18:56 /user/brandyn/playground/wc-input-alice.txt
     -rw-r--r--   2 brandyn supergroup      60638 2011-01-17 18:56 /user/brandyn/playground/wc-input-alice.txt.gz
 
-We can also get these in Python
+We can also do this in Python
 
     >>> import hadoopy
     >>> hadoopy.ls('playground/')
     ['/user/brandyn/playground/wc-input-alice.tb', '/user/brandyn/playground/wc-input-alice.txt', '/user/brandyn/playground/wc-input-alice.txt.gz']
 
-Lets put wc-input-alice.txt through the word counter using Hadoop
+Lets put wc-input-alice.txt through the word counter using Hadoop.  Each node in the cluster has Hadoopy installed (later we will show that it isn't necessary with launch_frozen).  Note that it is using typedbytes, SequenceFiles, and the AutoInputFormat by default.
 
     >>> cmd = hadoopy.launch('playground/wc-input-alice.txt', 'playground/out/', 'wc.py')
     HadooPY: Running[hadoop jar /usr/lib/hadoop-0.20/contrib/streaming/hadoop-streaming-0.20.2+737.jar -output playground/out/ -input playground/wc-input-alice.txt -mapper "python wc.py map" -reducer "python wc.py reduce" -file wc.py -jobconf mapred.job.name=python wc.py -io typedbytes -outputformat org.apache.hadoop.mapred.SequenceFileOutputFormat -    inputformat AutoInputFormat]
@@ -81,8 +86,8 @@ Lets put wc-input-alice.txt through the word counter using Hadoop
     11/01/17 20:22:32 INFO streaming.StreamJob: getLocalDirs(): [/var/lib/hadoop-0.20/cache/brandyn/mapred/local]
     11/01/17 20:22:32 INFO streaming.StreamJob: Running job: job_201101141644_0723
     11/01/17 20:22:32 INFO streaming.StreamJob: To kill this job, run:
-    11/01/17 20:22:32 INFO streaming.StreamJob: /usr/lib/hadoop-0.20/bin/hadoop job  -Dmapred.job.tracker=vitrieve03.pc.umiacs.umd.edu:8021 -kill job_201101141644_0723
-    11/01/17 20:22:32 INFO streaming.StreamJob: Tracking URL: http://vitrieve03.pc.umiacs.umd.edu:50030/jobdetails.jsp?jobid=job_201101141644_0723
+    11/01/17 20:22:32 INFO streaming.StreamJob: /usr/lib/hadoop-0.20/bin/hadoop job  -Dmapred.job.tracker=umiacs.umd.edu:8021 -kill job_201101141644_0723
+    11/01/17 20:22:32 INFO streaming.StreamJob: Tracking URL: http://umiacs.umd.edu:50030/jobdetails.jsp?jobid=job_201101141644_0723
     11/01/17 20:22:33 INFO streaming.StreamJob:  map 0%  reduce 0%
     11/01/17 20:22:40 INFO streaming.StreamJob:  map 50%  reduce 0%
     11/01/17 20:22:41 INFO streaming.StreamJob:  map 100%  reduce 0%
@@ -90,12 +95,12 @@ Lets put wc-input-alice.txt through the word counter using Hadoop
     11/01/17 20:22:55 INFO streaming.StreamJob: Job complete: job_201101141644_0723
     11/01/17 20:22:55 INFO streaming.StreamJob: Output: playground/out/
 
-Output is the command used
+Return value is the command used
 
     >>> print(cmd)
     hadoop jar /usr/lib/hadoop-0.20/contrib/streaming/hadoop-streaming-0.20.2+737.jar -output playground/out/ -input playground/wc-input-alice.txt -mapper "python wc.py map" -reducer "python wc.py reduce" -file wc.py -jobconf mapred.job.name=python wc.py -io typedbytes -outputformat org.apache.hadoop.mapred.SequenceFileOutputFormat -inputformat AutoInputFormat
 
-Lets see what the output looks like
+Lets see what the output looks like.
 
     >>> out = list(hadoopy.cat('playground/out'))
     >>> out[:10]
@@ -104,6 +109,94 @@ Lets see what the output looks like
     >>> out[-10:]
     [('was', 329), ('it', 356), ('in', 401), ('said', 416), ('she', 484), ('of', 596), ('a', 662), ('to', 773), ('and', 780), ('the', 1664)]
 
+Note that the output is stored in SequenceFiles and each key/value is stored encoded as TypedBytes, by using cat you don't have to worry about any of that (if the output was compressed it would also be decompressed).  This can also be done inside of a job for getting additional side-data.
+
+What if we don't want to install Python, numpy, scipy, or your-custom-code-that-always-changes?  We have you covered there too.  I'll remove hadoopy from all nodes except for the one executing the job. ::
+
+    $ sudo rm -r /usr/local/lib/python2.6/dist-packages/hadoopy*
+
+Now it's gone
+    >>> import hadoopy
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+    ImportError: No module named hadoopy
+
+The rest of the nodes were cleaned up the same way.  We modify the command, note that we now get the output from cx_Freeze at the top
+
+    >>> cmd = hadoopy.launch_frozen('playground/wc-input-alice.txt', 'playground/out_frozen/', 'wc.py')
+    Missing modules:
+    ? _md5 imported from hashlib
+    ? _scproxy imported from urllib
+    ? _sha imported from hashlib
+    ? _sha256 imported from hashlib
+    ? _sha512 imported from hashlib
+
+    HadooPY: Running[hadoop jar /usr/lib/hadoop-0.20/contrib/streaming/hadoop-streaming-0.20.2+737.jar -output playground/out_frozen/ -input playground/wc-input-alice.txt -mapper "wc map" -reducer "wc reduce" -file frozen/_codecs_tw.so -file frozen/_codecs_cn.so -file frozen/sgmlop.so -file frozen/_codecs_iso2022.so -file frozen/_main.so -file frozen/_ssl.so -file frozen/_codecs_hk.so -file frozen/_codecs_jp.so -file frozen/_multibytecodec.so -file frozen/datetime.so -file frozen/_codecs_kr.so -file frozen/mmap.so -file frozen/readline.so -file frozen/_heapq.so -file frozen/bz2.so -file frozen/_typedbytes.so -file frozen/_ctypes.so -file frozen/_hashlib.so -file frozen/_multiprocessing.so -file frozen/pyexpat.so -file frozen/libpython2.6.so.1.0 -file frozen/termios.so -file frozen/wc -jobconf mapred.job.name=wc -io typedbytes -outputformat org.apache.hadoop.mapred.SequenceFileOutputFormat -inputformat AutoInputFormat]
+    11/01/17 20:55:00 WARN streaming.StreamJob: -jobconf option is deprecated, please use -D instead.
+    packageJobJar: [frozen/_codecs_tw.so, frozen/_codecs_cn.so, frozen/sgmlop.so, frozen/_codecs_iso2022.so, frozen/_main.so, frozen/_ssl.so, frozen/_codecs_hk.so, frozen/_codecs_jp.so, frozen/_multibytecodec.so, frozen/datetime.so, frozen/_codecs_kr.so, frozen/mmap.so, frozen/readline.so, frozen/_heapq.so, frozen/bz2.so, frozen/_typedbytes.so, frozen/_ctypes.so, frozen/_hashlib.so, frozen/_multiprocessing.so, frozen/pyexpat.so, frozen/libpython2.6.so.1.0, frozen/termios.so, frozen/wc, /var/lib/hadoop-0.20/cache/brandyn/hadoop-unjar6437825264052222661/] [] /tmp/streamjob9089438158340520087.jar tmpDir=null
+    11/01/17 20:55:02 INFO mapred.FileInputFormat: Total input paths to process : 1
+    11/01/17 20:55:02 INFO streaming.StreamJob: getLocalDirs(): [/var/lib/hadoop-0.20/cache/brandyn/mapred/local]
+    11/01/17 20:55:02 INFO streaming.StreamJob: Running job: job_201101141644_0724
+    11/01/17 20:55:02 INFO streaming.StreamJob: To kill this job, run:
+    11/01/17 20:55:02 INFO streaming.StreamJob: /usr/lib/hadoop-0.20/bin/hadoop job  -Dmapred.job.tracker=umiacs.umd.edu:8021 -kill job_201101141644_0724
+    11/01/17 20:55:02 INFO streaming.StreamJob: Tracking URL: http://umiacs.umd.edu:50030/jobdetails.jsp?jobid=job_201101141644_0724
+    11/01/17 20:55:03 INFO streaming.StreamJob:  map 0%  reduce 0%
+    11/01/17 20:55:09 INFO streaming.StreamJob:  map 50%  reduce 0%
+    11/01/17 20:55:11 INFO streaming.StreamJob:  map 100%  reduce 0%
+    11/01/17 20:55:21 INFO streaming.StreamJob:  map 100%  reduce 100%
+    11/01/17 20:55:24 INFO streaming.StreamJob: Job complete: job_201101141644_0724
+    11/01/17 20:55:24 INFO streaming.StreamJob: Output: playground/out_frozen/
+
+And lets check the output
+
+    >>> out = list(hadoopy.cat('playground/out_frozen'))
+    >>> out[:10]
+    [('*', 60), ('-', 7), ('3', 2), ('4', 1), ('A', 8), ('I', 260), ('O', 1), ('a', 662), ('"I', 7), ("'A", 9)]
+    >>> out.sort(lambda x, y: cmp(x[1], y[1]))
+    >>> out[-10:]
+    [('was', 329), ('it', 356), ('in', 401), ('said', 416), ('she', 484), ('of', 596), ('a', 662), ('to', 773), ('and', 780), ('the', 1664)]
+
+We can also generate a tar of the frozen script (useful when working with Oozie).  Note the 'wc' is not wc.py, it is actually a self contained executable. ::
+
+    $ python wc.py freeze wc.tar.gz
+    Missing modules:
+    ? _md5 imported from hashlib
+    ? _scproxy imported from urllib
+    ? _sha imported from hashlib
+    ? _sha256 imported from hashlib
+    ? _sha512 imported from hashlib
+    $ tar -tzf wc.tar.gz 
+    _codecs_tw.so
+    _codecs_cn.so
+    sgmlop.so
+    _codecs_iso2022.so
+    _main.so
+    _codecs_hk.so
+    _codecs_jp.so
+    _multibytecodec.so
+    datetime.so
+    _codecs_kr.so
+    mmap.so
+    readline.so
+    _heapq.so
+    bz2.so
+    _typedbytes.so
+    _ctypes.so
+    _multiprocessing.so
+    pyexpat.so
+    libpython2.6.so.1.0
+    termios.so
+    wc
+
+Lets open it up and try it out ::
+
+    $ tar -xzf wc.py
+    $ ./wc
+    Hadoopy Wordcount Demo
+    $ python wc.py 
+    Hadoopy Wordcount Demo
+
+That's a quick tour of Hadoopy.
 
 API
 ---
