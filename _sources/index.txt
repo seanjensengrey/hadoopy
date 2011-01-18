@@ -11,8 +11,7 @@ Welcome to Hadoopy's documentation!
 ..  toctree::
     :maxdepth: 2
 
-Visit the Github_ for the source.
-.. _Github: https://github.com/bwhite/hadoopy/
+Visit the https://github.com/bwhite/hadoopy/ for the source.
 
 Example - Hello Wordcount!
 -------
