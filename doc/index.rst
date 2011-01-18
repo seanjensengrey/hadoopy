@@ -83,7 +83,7 @@ The majority of the time spent by Hadoopy (and Dumbo) is in the TypedBytes conve
 
 Example - Hello Wordcount!
 ---------------------------
-Python Source (fully documented version in tests/wc.py_) ::
+Python Source (fully documented version in `tests/wc.py`_) ::
 
     """Hadoopy Wordcount Demo"""
     import hadoopy
