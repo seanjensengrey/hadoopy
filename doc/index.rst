@@ -111,7 +111,7 @@ Lets see what the output looks like.
 
 Note that the output is stored in SequenceFiles and each key/value is stored encoded as TypedBytes, by using cat you don't have to worry about any of that (if the output was compressed it would also be decompressed).  This can also be done inside of a job for getting additional side-data.
 
-What if we don't want to install Python, numpy, scipy, or your-custom-code-that-always-changes?  We have you covered there too.  I'll remove hadoopy from all nodes except for the one executing the job. ::
+What if we don't want to install python, numpy, scipy, or your-custom-code-that-always-changes on every node in the cluster?  We have you covered there too.  I'll remove hadoopy from all nodes except for the one executing the job. ::
 
     $ sudo rm -r /usr/local/lib/python2.6/dist-packages/hadoopy*
 
