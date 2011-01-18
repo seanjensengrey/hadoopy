@@ -145,16 +145,13 @@ Found 3 items
 <p>What if we don&#8217;t want to install python, numpy, scipy, or your-custom-code-that-always-changes on every node in the cluster?  We have you covered there too.  I&#8217;ll remove hadoopy from all nodes except for the one executing the job.</p>
 <div class="highlight-python"><pre>$ sudo rm -r /usr/local/lib/python2.6/dist-packages/hadoopy*</pre>
 </div>
-<dl class="docutils">
-<dt>Now it&#8217;s gone</dt>
-<dd><div class="first last highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">hadoopy</span>
+<p>Now it&#8217;s gone</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">hadoopy</span>
 <span class="gt">Traceback (most recent call last):</span>
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
 <span class="gr">ImportError</span>: <span class="n">No module named hadoopy</span>
 </pre></div>
 </div>
-</dd>
-</dl>
 <p>The rest of the nodes were cleaned up the same way.  We modify the command, note that we now get the output from cx_Freeze at the top</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">cmd</span> <span class="o">=</span> <span class="n">hadoopy</span><span class="o">.</span><span class="n">launch_frozen</span><span class="p">(</span><span class="s">&#39;playground/wc-input-alice.txt&#39;</span><span class="p">,</span> <span class="s">&#39;playground/out_frozen/&#39;</span><span class="p">,</span> <span class="s">&#39;wc.py&#39;</span><span class="p">)</span>
 <span class="go">Missing modules:</span>

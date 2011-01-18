@@ -116,6 +116,7 @@ What if we don't want to install python, numpy, scipy, or your-custom-code-that-
     $ sudo rm -r /usr/local/lib/python2.6/dist-packages/hadoopy*
 
 Now it's gone
+
     >>> import hadoopy
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
