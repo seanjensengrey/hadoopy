@@ -275,17 +275,18 @@ $ hexdump -C wc | head -n5
 </dl>
 <div class="line-block">
 <div class="line"><strong>Specification of mapper/reducer/combiner</strong></div>
-<div class="line">Input Key/Value Types
-| For TypedBytes, the type will be the decoded typed
-| For Text, the type will be text assuming key0\tvalue0\nkey1\tvalue1\n</div>
+<div class="line">Input Key/Value Types</div>
+<div class="line-block">
+<div class="line">For TypedBytes, the type will be the decoded typed</div>
+<div class="line">For Text, the type will be text assuming key0\tvalue0\nkey1\tvalue1\n</div>
+<div class="line"><br /></div>
 </div>
-<p>Output Key/Value Types</p>
-<blockquote>
-<div><div class="line-block">
+<div class="line">Output Key/Value Types</div>
+<div class="line-block">
 <div class="line">For TypedBytes, anything Pickle-able can be used</div>
 <div class="line">For Text, types are converted to string.  Note that neither may contain \t or \n as these are used in the encoding.  Output is key\tvalue\n</div>
 </div>
-</div></blockquote>
+</div>
 <p>Expected arguments</p>
 <blockquote>
 <div><div class="line-block">
