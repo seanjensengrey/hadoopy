@@ -32,8 +32,12 @@ Hadoopy is a Python wrapper for Hadoop Streaming written in Cython.  It is simpl
 Benchmark
 ---------
 
-The majority of the time spent by Hadoopy (and Dumbo) is in the TypedBytes conversion code.  This is a simple binary serialization format that covers standard types with the ability to use Pickle for types not natively supported.  We generate a large set of test vectors (using the play/tb_make_test.py script), that have primatives, containers, and a uniform mix (GrabBag).  The idea is that by factoring out the types, we can easily see where optimization is needed.  Four methods are compared:  Hadoopy TypedBytes (speed_hadoopy.py), Hadoopy TypedBytes file interface (speed_hadoopyfp.py), TypedBytes_ (speed_tb.py), and cTypedBytes_ (speed_ctb.py).  The ratio is min(TB, cTB) / Hadoopy (e.g., 7 means Hadoopy is 7 times faster).
+The majority of the time spent by Hadoopy (and Dumbo) is in the TypedBytes conversion code.  This is a simple binary serialization format that covers standard types with the ability to use Pickle for types not natively supported.  We generate a large set of test vectors (using the play/tb_make_test.py script), that have primatives, containers, and a uniform mix (GrabBag).  The idea is that by factoring out the types, we can easily see where optimization is needed.  Four methods are compared:  Hadoopy TypedBytes (speed_hadoopy.py_), Hadoopy TypedBytes file interface (speed_hadoopyfp.py_), TypedBytes_ (speed_tb.py_), and cTypedBytes_ (speed_ctb.py_).  The ratio is min(TB, cTB) / Hadoopy (e.g., 7 means Hadoopy is 7 times faster).
 
+.. _speed_hadoopy.py: https://github.com/bwhite/hadoopy/blob/master/play/speed_hadoopy.py
+.. _speed_hadoopyfp.py: https://github.com/bwhite/hadoopy/blob/master/play/speed_hadoopyfp.py
+.. _speed_ctb.py: https://github.com/bwhite/hadoopy/blob/master/play/speed_ctb.py
+.. _speed_tb.py: https://github.com/bwhite/hadoopy/blob/master/play/speed_tb.py
 .. _TypedBytes:  https://github.com/klbostee/typedbytes
 .. _cTypedBytes: https://github.com/klbostee/ctypedbytes
 
