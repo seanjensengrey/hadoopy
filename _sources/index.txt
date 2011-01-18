@@ -31,7 +31,7 @@ Python Source (fully documented version in tests/wc.py) ::
     if __name__ == "__main__":
         hadoopy.run(mapper, reducer, doc=__doc__)
 
-Command line test (run without args prints docstring and quits because of doc=__doc__) ::
+Command line test (run without args, it prints the docstring and quits because of doc=__doc__) ::
 
     $ python wc.py
     Hadoopy Wordcount Demo
