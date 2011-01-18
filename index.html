@@ -264,25 +264,21 @@ $ hexdump -C wc | head -n5
 <div class="line">The command line switches added to your script (e.g., script.py) are</div>
 </div>
 <dl class="docutils">
-<dt>python script.py map</dt>
+<dt>python script.py <em>map</em></dt>
 <dd>Use the provided mapper</dd>
-<dt>python script.py reduce</dt>
+<dt>python script.py <em>reduce</em></dt>
 <dd>Use the provided reducer</dd>
-<dt>python script.py combine</dt>
+<dt>python script.py <em>combine</em></dt>
 <dd>Use the provided combiner</dd>
-<dt>python script.py freeze &lt;tar_path&gt; &lt;-Zadd_file0 -Zadd_file1...&gt; &lt;cx_Freeze args&gt;</dt>
+<dt>python script.py <em>freeze</em> &lt;tar_path&gt; &lt;-Zadd_file0 -Zadd_file1...&gt; &lt;cx_Freeze args&gt;</dt>
 <dd>Freeze the script to a tar file specified by &lt;tar_path&gt;.  The extension may be .tar or .tar.gz.  All files are placed in the root of the tar. Files specified with -Z will be added to the tar root.  Additional cx_Freeze arguments may be passed in.</dd>
 </dl>
 <div class="line-block">
 <div class="line"><strong>Specification of mapper/reducer/combiner</strong></div>
-<div class="line">Input Key/Value Types</div>
+<div class="line">Input Key/Value Types
+| For TypedBytes, the type will be the decoded typed
+| For Text, the type will be text assuming key0\tvalue0\nkey1\tvalue1\n</div>
 </div>
-<blockquote>
-<div><div class="line-block">
-<div class="line">For TypedBytes, the type will be the decoded typed</div>
-<div class="line">For Text, the type will be text assuming key0\tvalue0\nkey1\tvalue1\n</div>
-</div>
-</div></blockquote>
 <p>Output Key/Value Types</p>
 <blockquote>
 <div><div class="line-block">

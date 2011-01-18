@@ -240,18 +240,17 @@ API
     | **Command Interface**
     | The command line switches added to your script (e.g., script.py) are
 
-    python script.py map
+    python script.py *map*
         Use the provided mapper
-    python script.py reduce
+    python script.py *reduce*
         Use the provided reducer
-    python script.py combine
+    python script.py *combine*
         Use the provided combiner
-    python script.py freeze <tar_path> <-Zadd_file0 -Zadd_file1...> <cx_Freeze args>
+    python script.py *freeze* <tar_path> <-Zadd_file0 -Zadd_file1...> <cx_Freeze args>
         Freeze the script to a tar file specified by <tar_path>.  The extension may be .tar or .tar.gz.  All files are placed in the root of the tar. Files specified with -Z will be added to the tar root.  Additional cx_Freeze arguments may be passed in.
     
     | **Specification of mapper/reducer/combiner** 
     | Input Key/Value Types
-
         | For TypedBytes, the type will be the decoded typed
         | For Text, the type will be text assuming key0\\tvalue0\\nkey1\\tvalue1\\n
 
