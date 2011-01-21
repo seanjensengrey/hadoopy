@@ -41,7 +41,7 @@ The majority of the time spent by Hadoopy (and Dumbo) is in the TypedBytes conve
 .. _tb_make_test.py: https://github.com/bwhite/hadoopy/blob/master/play/tb_make_test.py
 .. _speed_hadoopy.py: https://github.com/bwhite/hadoopy/blob/master/play/speed_hadoopy.py
 .. _speed_hadoopyfp.py: https://github.com/bwhite/hadoopy/blob/master/play/speed_hadoopyfp.py
-.. _speed_ctb.py: https://github.com/bwhite/hadoopy/blob/master/play/speed_ctb.py
+.. _speed_tbc.py: https://github.com/bwhite/hadoopy/blob/master/play/speed_tbc.py
 .. _speed_tb.py: https://github.com/bwhite/hadoopy/blob/master/play/speed_tb.py
 .. _TypedBytes:  https://github.com/klbostee/typedbytes
 .. _cTypedBytes: https://github.com/klbostee/ctypedbytes
