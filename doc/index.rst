@@ -317,7 +317,7 @@ API
     | Expected arguments
     |     mapper(key, value) or mapper.map(key, value)
     |     reducer(key, values) or reducer.reduce(key, values)
-    |     combiner(key, values) or combiner.combine(key, values)
+    |     combiner(key, values) or combiner.reduce(key, values)
     |
     | Optional methods
     |     func.configure(): Called before any input read.  Returns None.
