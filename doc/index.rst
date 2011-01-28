@@ -198,7 +198,7 @@ Now it's gone
       File "<stdin>", line 1, in <module>
     ImportError: No module named hadoopy
 
-The rest of the nodes were cleaned up the same way.  We modify the command, note that we now get the output from cx_Freeze at the top ::
+The rest of the nodes were cleaned up the same way.  We modify the command, note that we now get the output from freeze at the top ::
 
     >>> cmd = hadoopy.launch_frozen('playground/wc-input-alice.txt', 'playground/out_frozen/', 'wc.py')
     Missing modules:
@@ -302,8 +302,8 @@ API
         Use the provided reducer
     python script.py *combine*
         Use the provided combiner
-    python script.py *freeze* <tar_path> <-Zadd_file0 -Zadd_file1...> <cx_Freeze args>
-        Freeze the script to a tar file specified by <tar_path>.  The extension may be .tar or .tar.gz.  All files are placed in the root of the tar. Files specified with -Z will be added to the tar root.  Additional cx_Freeze arguments may be passed in.
+    python script.py *freeze* <tar_path> <-Zadd_file0 -Zadd_file1...>
+        Freeze the script to a tar file specified by <tar_path>.  The extension may be .tar or .tar.gz.  All files are placed in the root of the tar. Files specified with -Z will be added to the tar root.
     
     | **Specification of mapper/reducer/combiner** 
     | Input Key/Value Types
@@ -355,7 +355,7 @@ API
     :param amount: Value to add (default 1)
     :param err: Func that outputs a string, if None then sys.stderr.write is used (default None)
 
-..  function:: hadoopy.launch(in_name, out_name, script_path[, mapper=True, reducer=True, combiner=False, partitioner=False, files=(), jobconfs=(), cmdenvs=(), copy_script=True, hstreaming=None, name=None, use_typedbytes=True, use_seqoutput=True, use_autoinput=True, pretend=False, add_python=True, **kw])
+..  function:: hadoopy.launch(in_name, out_name, script_path[, mapper=True, reducer=True, combiner=False, partitioner=False, files=(), jobconfs=(), cmdenvs=(), copy_script=True, hstreaming=None, name=None, use_typedbytes=True, use_seqoutput=True, use_autoinput=True, pretend=False, add_python=True, config=None, **kw])
     
     Run Hadoop given the parameters
 
@@ -376,12 +376,13 @@ API
     :param use_autoinput: If True (default), sets the input format to auto.
     :param pretend: If true, only build the command and return.
     :param add_python: If true, use 'python script_name.py'
+    :param config: If a string, set the hadoop config path
     :rtype: The hadoop command called.
     :raises: subprocess.CalledProcessError: Hadoop error.
     :raises: OSError: Hadoop streaming not found.
 
 
-..  function:: hadoopy.launch_frozen(in_name, out_name, script_path[, mapper=True, reducer=True, combiner=False, partitioner=False, files=(), jobconfs=(), cmdenvs=(), copy_script=True, hstreaming=None, name=None, use_typedbytes=True, use_seqoutput=True, use_autoinput=True, pretend=False, add_python=True, shared_libs=(), modules=(), remove_dir=False, target_dir='frozen', exclude_modules=('tcl', 'tk', 'Tkinter'), freeze_cmd='cxfreeze', pretend=False, verbose=False, extra='', **kw])
+..  function:: hadoopy.launch_frozen(in_name, out_name, script_path[, mapper=True, reducer=True, combiner=False, partitioner=False, files=(), jobconfs=(), cmdenvs=(), copy_script=True, hstreaming=None, name=None, use_typedbytes=True, use_seqoutput=True, use_autoinput=True, pretend=False, add_python=True, config=None, verbose=False, **kw])
 
     Freezes a script and then launches it.
 
@@ -402,17 +403,11 @@ API
     :param use_autoinput: If True (default), sets the input format to auto.
     :param pretend: If true, only build the command and return.
     :param add_python: If true, use 'python script_name.py'
-    :param shared_libs: A sequence of additional shared library paths for cxfreeze to include.
-    :param modules: Additional modules to include.
-    :param remove_dir: Will rm -r the target_dir when true (be careful)! (default is False)
-    :param target_dir: Output directory where cxfreeze and this function output.
-    :param exclude_modules: A sequence of modules for cxfreeze to ignore (default is (tcl, tk, Tkinter))
-    :param freeze_cmd: Path to cxfreeze (default is cxfreeze)
+    :param config: If a string, set the hadoop config path
     :param verbose: If true, output to stdout all command results.
-    :param extra: A string to be appended to the cxfreeze command
-    :rtype: A tuple of the freeze and hadoop commands.
-    :raises: subprocess.CalledProcessError: Hadoop or cxfreeze error.
-    :raises: OSError: Hadoop streaming or cxfreeze not found.
+    :rtype: The hadoop command called.
+    :raises: subprocess.CalledProcessError: Hadoop or freeze error.
+    :raises: OSError: Hadoop streaming or freeze not found.
 
 ..  function:: hadoopy.ls(path)
 

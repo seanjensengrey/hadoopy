@@ -318,7 +318,7 @@ Found 3 items
 <span class="nc">ImportError</span>: <span class="n-Identifier">No module named hadoopy</span>
 </pre></div>
 </div>
-<p>The rest of the nodes were cleaned up the same way.  We modify the command, note that we now get the output from cx_Freeze at the top</p>
+<p>The rest of the nodes were cleaned up the same way.  We modify the command, note that we now get the output from freeze at the top</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">cmd</span> <span class="o">=</span> <span class="n">hadoopy</span><span class="o">.</span><span class="n">launch_frozen</span><span class="p">(</span><span class="s">&#39;playground/wc-input-alice.txt&#39;</span><span class="p">,</span> <span class="s">&#39;playground/out_frozen/&#39;</span><span class="p">,</span> <span class="s">&#39;wc.py&#39;</span><span class="p">)</span>
 <span class="go">Missing modules:</span>
 <span class="go">? _md5 imported from hashlib</span>
@@ -418,8 +418,8 @@ $ hexdump -C wc | head -n5
 <dd>Use the provided reducer</dd>
 <dt>python script.py <em>combine</em></dt>
 <dd>Use the provided combiner</dd>
-<dt>python script.py <em>freeze</em> &lt;tar_path&gt; &lt;-Zadd_file0 -Zadd_file1...&gt; &lt;cx_Freeze args&gt;</dt>
-<dd>Freeze the script to a tar file specified by &lt;tar_path&gt;.  The extension may be .tar or .tar.gz.  All files are placed in the root of the tar. Files specified with -Z will be added to the tar root.  Additional cx_Freeze arguments may be passed in.</dd>
+<dt>python script.py <em>freeze</em> &lt;tar_path&gt; &lt;-Zadd_file0 -Zadd_file1...&gt;</dt>
+<dd>Freeze the script to a tar file specified by &lt;tar_path&gt;.  The extension may be .tar or .tar.gz.  All files are placed in the root of the tar. Files specified with -Z will be added to the tar root.</dd>
 </dl>
 <div class="line-block">
 <div class="line"><strong>Specification of mapper/reducer/combiner</strong></div>
@@ -517,7 +517,7 @@ occurred, current progress, or coarse statistics.</p>
 
 <dl class="function">
 <dt id="hadoopy.launch">
-<tt class="descclassname">hadoopy.</tt><tt class="descname">launch</tt><big>(</big><em>in_name</em>, <em>out_name</em>, <em>script_path</em><span class="optional">[</span>, <em>mapper=True</em>, <em>reducer=True</em>, <em>combiner=False</em>, <em>partitioner=False</em>, <em>files=()</em>, <em>jobconfs=()</em>, <em>cmdenvs=()</em>, <em>copy_script=True</em>, <em>hstreaming=None</em>, <em>name=None</em>, <em>use_typedbytes=True</em>, <em>use_seqoutput=True</em>, <em>use_autoinput=True</em>, <em>pretend=False</em>, <em>add_python=True</em>, <em>**kw</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#hadoopy.launch" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">hadoopy.</tt><tt class="descname">launch</tt><big>(</big><em>in_name</em>, <em>out_name</em>, <em>script_path</em><span class="optional">[</span>, <em>mapper=True</em>, <em>reducer=True</em>, <em>combiner=False</em>, <em>partitioner=False</em>, <em>files=()</em>, <em>jobconfs=()</em>, <em>cmdenvs=()</em>, <em>copy_script=True</em>, <em>hstreaming=None</em>, <em>name=None</em>, <em>use_typedbytes=True</em>, <em>use_seqoutput=True</em>, <em>use_autoinput=True</em>, <em>pretend=False</em>, <em>add_python=True</em>, <em>config=None</em>, <em>**kw</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#hadoopy.launch" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run Hadoop given the parameters</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -541,6 +541,7 @@ occurred, current progress, or coarse statistics.</p>
 <li><strong>use_autoinput</strong> &#8211; If True (default), sets the input format to auto.</li>
 <li><strong>pretend</strong> &#8211; If true, only build the command and return.</li>
 <li><strong>add_python</strong> &#8211; If true, use &#8216;python script_name.py&#8217;</li>
+<li><strong>config</strong> &#8211; If a string, set the hadoop config path</li>
 </ul>
 </td>
 </tr>
@@ -559,7 +560,7 @@ occurred, current progress, or coarse statistics.</p>
 
 <dl class="function">
 <dt id="hadoopy.launch_frozen">
-<tt class="descclassname">hadoopy.</tt><tt class="descname">launch_frozen</tt><big>(</big><em>in_name</em>, <em>out_name</em>, <em>script_path</em><span class="optional">[</span>, <em>mapper=True</em>, <em>reducer=True</em>, <em>combiner=False</em>, <em>partitioner=False</em>, <em>files=()</em>, <em>jobconfs=()</em>, <em>cmdenvs=()</em>, <em>copy_script=True</em>, <em>hstreaming=None</em>, <em>name=None</em>, <em>use_typedbytes=True</em>, <em>use_seqoutput=True</em>, <em>use_autoinput=True</em>, <em>pretend=False</em>, <em>add_python=True</em>, <em>shared_libs=()</em>, <em>modules=()</em>, <em>remove_dir=False</em>, <em>target_dir='frozen'</em>, <em>exclude_modules=('tcl'</em>, <em>'tk'</em>, <em>'Tkinter')</em>, <em>freeze_cmd='cxfreeze'</em>, <em>pretend=False</em>, <em>verbose=False</em>, <em>extra=''</em>, <em>**kw</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#hadoopy.launch_frozen" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">hadoopy.</tt><tt class="descname">launch_frozen</tt><big>(</big><em>in_name</em>, <em>out_name</em>, <em>script_path</em><span class="optional">[</span>, <em>mapper=True</em>, <em>reducer=True</em>, <em>combiner=False</em>, <em>partitioner=False</em>, <em>files=()</em>, <em>jobconfs=()</em>, <em>cmdenvs=()</em>, <em>copy_script=True</em>, <em>hstreaming=None</em>, <em>name=None</em>, <em>use_typedbytes=True</em>, <em>use_seqoutput=True</em>, <em>use_autoinput=True</em>, <em>pretend=False</em>, <em>add_python=True</em>, <em>config=None</em>, <em>verbose=False</em>, <em>**kw</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#hadoopy.launch_frozen" title="Permalink to this definition">¶</a></dt>
 <dd><p>Freezes a script and then launches it.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -583,24 +584,18 @@ occurred, current progress, or coarse statistics.</p>
 <li><strong>use_autoinput</strong> &#8211; If True (default), sets the input format to auto.</li>
 <li><strong>pretend</strong> &#8211; If true, only build the command and return.</li>
 <li><strong>add_python</strong> &#8211; If true, use &#8216;python script_name.py&#8217;</li>
-<li><strong>shared_libs</strong> &#8211; A sequence of additional shared library paths for cxfreeze to include.</li>
-<li><strong>modules</strong> &#8211; Additional modules to include.</li>
-<li><strong>remove_dir</strong> &#8211; Will rm -r the target_dir when true (be careful)! (default is False)</li>
-<li><strong>target_dir</strong> &#8211; Output directory where cxfreeze and this function output.</li>
-<li><strong>exclude_modules</strong> &#8211; A sequence of modules for cxfreeze to ignore (default is (tcl, tk, Tkinter))</li>
-<li><strong>freeze_cmd</strong> &#8211; Path to cxfreeze (default is cxfreeze)</li>
+<li><strong>config</strong> &#8211; If a string, set the hadoop config path</li>
 <li><strong>verbose</strong> &#8211; If true, output to stdout all command results.</li>
-<li><strong>extra</strong> &#8211; A string to be appended to the cxfreeze command</li>
 </ul>
 </td>
 </tr>
-<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">A tuple of the freeze and hadoop commands.</p>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">The hadoop command called.</p>
 </td>
 </tr>
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><p class="first">subprocess.CalledProcessError: Hadoop or cxfreeze error.</p>
+<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><p class="first">subprocess.CalledProcessError: Hadoop or freeze error.</p>
 </td>
 </tr>
-<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last">OSError: Hadoop streaming or cxfreeze not found.</p>
+<tr class="field"><th class="field-name">Raises :</th><td class="field-body"><p class="first last">OSError: Hadoop streaming or freeze not found.</p>
 </td>
 </tr>
 </tbody>
